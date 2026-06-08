@@ -1,0 +1,10 @@
+# BatteryClaw Phase 2 — Python deps cho data collector + world model
+numpy
+pandas
+pyarrow
+torch
+gymnasium
+stable-baselines3
+onnx
+onnxruntime
+requests

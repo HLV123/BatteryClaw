@@ -1,0 +1,5 @@
+dist\BatteryClaw_business\BatteryClaw.exe
+
+dist\BatteryClaw_business\engine\BatteryClawEngine.exe
+
+when build successfully

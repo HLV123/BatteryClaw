@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- BatteryClaw Engine (Phase 5) — C#/.NET, khai thác sâu hệ sinh thái Windows.
+       Thay dần engine C++ ở các tính năng cần API Windows cao cấp:
+         ETW, WinML, Power Throttling, Task Scheduler, Battery Report. -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- net8.0-windows: cần API Windows; WinML cần TFM windows10. -->
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>BatteryClawEngine</AssemblyName>
+    <RootNamespace>BatteryClaw.Engine</RootNamespace>
+    <Platforms>x64</Platforms>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- ETW (5.1): thư viện TraceEvent chính chủ Microsoft -->
+    <PackageReference Include="Microsoft.Diagnostics.Tracing.TraceEvent" Version="3.1.9" />
+    <!-- WinML (5.2): chạy ONNX trên DirectML. Dùng ONNX Runtime + DirectML EP
+         (ổn định hơn Windows.AI.MachineLearning thuần, vẫn tăng tốc GPU). -->
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.DirectML" Version="1.18.0" />
+    <!-- Task Scheduler (5.4): wrapper quản lý task -->
+    <PackageReference Include="TaskScheduler" Version="2.11.0" />
+    <!-- Thu thap state that (Phase 5 serve mode): WMI -->
+    <PackageReference Include="System.Management" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>

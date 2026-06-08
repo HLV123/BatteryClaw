@@ -1,0 +1,152 @@
+================================================================
+  BATTERYCLAW — REVIEW SỬA LỖI TỪ LOG INFERENCE THẬT (Vòng 15)
+  Ngày: 2026-06-06
+  Nguồn: rl_brain.log (600+ step chạy thật),
+  File đổi sau khi chạy số 3 6h20-pm: engine_dotnet/State/SystemStateCollector.cs
+            build_business.ps1
+            brain/rl_brain.py
+            simulator/train.py, simulator/battery_env.py
+  Tests: 11/11 PASS (đã chạy xác nhận)
+================================================================
+
+── BỐI CẢNH ──────────────────────────────────────────────────
+
+Sau khi train 5 triệu steps và đóng gói chạy thật trên máy MSI,
+log inference cho thấy 3 triệu chứng:
+  1. Disch luôn = 1mW suốt 600+ step (gần như = 0).
+  2. Action gần như đứng yên: chạy pin thì luôn Br:30% @20% 60Hz.
+  3. Log báo: "Could not enable online learning: No module
+     named 'replay_buffer'".
+
+Hai chuyên gia ngoài chẩn đoán "policy collapse / bão hòa trọng
+số". Phân tích lại log kỹ cho thấy chẩn đoán đó CHƯA ĐÚNG hẳn —
+xem mục PHÂN TÍCH bên dưới.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PHÂN TÍCH — NGUYÊN NHÂN THẬT (khác chẩn đoán ban đầu)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[Không phải policy collapse]
+Log cho thấy model VẪN phản ứng theo nguồn điện (BATTERY → bóp
+tiết kiệm; PLUGGED → nới ra) và có Best episode 1122 lúc train.
+Nếu collapse thật thì cả hai điều này không xảy ra. Thực chất:
+model học một chính sách HỢP LỆ nhưng QUÁ CỰC ĐOAN — "chạy pin
+thì hạ sát sàn mọi thứ bất kể app".
+
+[Gốc rễ bị bỏ sót: engine MÙ dòng xả]
+Disch=1mW nghĩa là obs[9] (discharge — tín hiệu QUAN TRỌNG NHẤT
+trong 15 observation) gần như luôn = 0 trên máy thật. Model được
+train với discharge đầy đủ, nhưng deploy lại chạy với giác quan
+chính bị mù → hành xử khác hẳn và cực đoan. Đây là nguyên nhân
+lớn nhất, không phải lỗi trọng số.
+
+[Một phần "đơ" là do lớp override cứng]
+Br nhảy 30%→70% khi cắm sạc KHÔNG phải do AI, mà do code
+rl_brain ép cứng brightness>=0.70 khi plugged. Lớp này che mất
+quyết định thật của AI, gây hiểu nhầm.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  CÁC SỬA ĐỔI (4 NHÓM, theo thứ tự gốc → ngọn)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[FIX 1] ⚠️ Disch=1mW — engine mù dòng xả (NGHIÊM TRỌNG NHẤT)
+─────────────────────────────────────────────────────────────────
+File: engine_dotnet/State/SystemStateCollector.cs
+
+Vấn đề: nhiều laptop (gồm MSI) báo WMI BatteryStatus.DischargeRate
+= 0 dù đang xả pin. ETW thì cần Admin + không phải lúc nào cũng có
+event. Cả hai nguồn = 0 → discharge_mw ≈ 0 → obs[9] mù.
+
+Sửa: khi DischargeRate <= 1 và đang chạy pin, ước lượng discharge
+từ TỐC ĐỘ TỤT RemainingCapacity giữa 2 lần đọc:
+    discharge_mW = (prev_remain - remain) / (delta_giây / 3600)
+Lưu _prevRemain + _prevRemainTime + _lastPlugged giữa các lần gọi.
+
+Đánh đổi: discharge ước lượng chỉ cập nhật khi % pin đổi (vài chục
+giây/lần) nên "thô" hơn ETW realtime, nhưng còn hơn mù hẳn. Muốn
+mượt hơn cần ETW chạy đúng (Admin).
+
+[FIX 2] Online learning chết trong file .exe
+─────────────────────────────────────────────────────────────────
+File: build_business.ps1
+
+Vấn đề: thư mục online/ import submodule qua sys.path.insert động
+(online/buffer/replay_buffer.py ...). PyInstaller không dò được
+import động → không gom vào exe → lỗi "No module named replay_buffer"
+→ online learning tắt hoàn toàn.
+
+Sửa: thêm vào lệnh PyInstaller:
+  • --paths cho TỪNG thư mục con: online/buffer, online/safety,
+    online/finetune, online/personalize, online/feedback
+  • --collect-submodules online
+  • --hidden-import cho 10 module: replay_buffer, constraints, ewc,
+    checkpoint, finetuner, pattern_tracker, feedback_store, modes,
+    online_loop, brain_online_adapter
+Test: 10/10 submodule import OK khi có đúng paths.
+
+[FIX 3] Nới lớp override che quyết định AI
+─────────────────────────────────────────────────────────────────
+File: brain/rl_brain.py (khối "if plugged")
+
+Trước: khi cắm sạc ép cứng brightness>=0.70, throttle>=0.80
+       → che hoàn toàn quyết định AI.
+Sau:   nới xuống sàn an toàn nhẹ brightness>=0.45, throttle>=0.60
+       → AI tự quyết phần lớn, chỉ giữ sàn để không quá tối/chậm.
+
+[FIX 4] Model bớt cực đoan + export tốt hơn
+─────────────────────────────────────────────────────────────────
+File: simulator/train.py, simulator/battery_env.py
+
+(a) Export ONNX từ BEST model (do EvalCallback lưu) thay vì model
+    CUỐI — model cuối bị "nhuộm" bởi phase 4 khắc nghiệt.
+(b) model.policy.set_training_mode(False) trước export (eval mode,
+    inference ổn định — xử lý cảnh báo PyTorch).
+(c) Nhẹ phase 4 stress test: spike 2x→1.5x; pin chai 0.55-0.80 →
+    0.62-0.85 (bớt sập nguồn ảo liên tục).
+(d) Đổi tỉ lệ curriculum: phase 4 từ 20% → 12%, dồn thời gian cho
+    phase 2-3 (vùng model học hiệu quả nhất).
+(e) Eval ở difficulty 3 (điều kiện thực tế) thay vì 4 (stress cực
+    đoan) → best model chọn ra thực dụng hơn.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  KIỂM THỬ ĐÃ CHẠY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  • syntax 4 file Python/C#: OK
+  • train curriculum 4 phase: chạy mượt, export đúng từ BEST model
+  • ONNX export: (batch,15) → (batch,7), test run OK
+  • 10/10 submodule online import được với paths mới
+  • ngoặc C# (SystemStateCollector) + PowerShell (build_business): cân
+  • contract test: 11/11 PASS
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  VIỆC CẦN LÀM TRÊN MÁY (vì engine + train đều đổi)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Train lại:   python simulator\train.py --steps 5000000
+  2. Build lại:   powershell -ExecutionPolicy Bypass -File build_business.ps1
+                  (cửa sổ Admin)
+  3. Chạy thử, kiểm 3 điểm trong log mới:
+     • Disch có SỐ THẬT (không còn 1mW) khi chạy pin
+     • Br / @CPU thay đổi theo app, không ghim cứng 30%
+     • KHÔNG còn dòng "Could not enable online learning"
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  GHI CHÚ CHO TƯƠNG LAI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  • discharge hiện ước lượng từ tốc độ tụt pin (thô). Nếu muốn
+    realtime mượt, cần đảm bảo ETW chạy với quyền Admin.
+  • Multi-profile reward (F7) vẫn là 1 policy thỏa hiệp — chưa cá
+    nhân hóa thật (cần train 3 model riêng nếu muốn — dài hạn).
+  • Nên A/B test model mới vs model cũ trên máy thật để xác nhận
+    bớt cực đoan trước khi bán rộng.
+
+================================================================
+  END OF REVIEW (Vòng 15)
+================================================================

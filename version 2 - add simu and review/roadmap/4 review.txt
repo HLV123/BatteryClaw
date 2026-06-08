@@ -1,0 +1,273 @@
+================================================================
+  CODE REVIEW: BatteryClaw — Thêm Simulator (Vòng 9–12)
+  Phạm vi: simulator/battery_env.py, simulator/train.py,
+           app/buy_business.py (APPDATA fix)
+  Tham chiếu: md đợt 1 (9h), đợt 2 (9h30), đợt 3 (9h50)
+  Tests: 11/11 PASS (đã chạy xác nhận)
+================================================================
+
+── TÓM TẮT NHANH ─────────────────────────────────────────────
+
+12 tính năng simulator qua 3 đợt được implement đúng về mặt
+vật lý và đúng contract. Contract 15→7 không bị phá.
+Phát hiện 2 bug nhỏ (1 cần sửa trước khi train dài) và
+2 điểm thiết kế cần ghi chú để không bị nhầm sau này.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PHẦN 1 — XÁC NHẬN CÁC TÍNH NĂNG ĐÚNG
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[✅ Đợt 1] 12 workload, 6 máy, sạc, nhiệt, chu kỳ ngày/đêm, cá tính
+─────────────────────────────────────────────────────────────────
+WL_TO_GROUP gom 12 workload → 5 nhóm → obs[3] trong [0,1]. ✓
+REFRESH_MODE_TO_HZ bảo vệ bất biến đã thiết lập từ vòng review trước. ✓
+_baseline_power() tính đúng công thức iGPU/dGPU nhất quán với
+_gpu_power(). ✓
+
+[✅ APPDATA fix — vòng 10] Buy_business.py ghi về %APPDATA%
+─────────────────────────────────────────────────────────────────
+APP_DATA = os.environ.get("APPDATA") or os.path.expanduser("~")
+Fallback về home dir đúng khi không có APPDATA (Linux/dev).
+online_dir và state_dir đều dùng STATE_DIR nhất quán. ✓
+Vấn đề "cài vào C:\Program Files\ thì online learning âm thầm
+thất bại" đã được giải quyết đúng.
+
+[✅ F1] Action Delay — thiết kế đúng về lý thuyết
+─────────────────────────────────────────────────────────────────
+Hàng đợi phân tầng theo difficulty:
+  diff 1-2 → delay=0 (tức thì)
+  diff 3   → delay=1 step (10s)
+  diff 4   → delay=2 step (20s)
+AI buộc học "ra lệnh trước, không dao động liên tục". ✓
+(Xem BUG-01 cho vấn đề warmup nhỏ.)
+
+[✅ F2] Spike Workload — spike_left quản lý đúng
+─────────────────────────────────────────────────────────────────
+Spike chỉ kích hoạt khi spike_left==0 → không overlap.
+extra_load cộng vào power_mw độc lập với throttle → đúng,
+AI không thể "tắt" spike mà phải học bù trừ. ✓
+Tần suất tính được: diff=3 ~3.6 spike/episode, diff=4 ~7.2. ✓
+
+[✅ F3] Đường cong xả pin phi tuyến — hệ số tính đúng
+─────────────────────────────────────────────────────────────────
+steep = 1.0 + (0.20 - pct) / 0.20 * (0.8 + (1.0-health) * 0.6)
+Khi pct=0.00, health=0.60: steep ≈ 1.0 + 1.0*(0.8+0.24) = 2.04 ✓
+Brownout threshold = (1-health)*0.06: pin chai 60% sập ở 2.4% ✓
+Chỉ bật ở diff≥3 và chỉ khi unplugged. ✓
+
+[✅ F4/F8] Curriculum 4 phase — tỉ lệ và chuyển phase đúng
+─────────────────────────────────────────────────────────────────
+phases = [(1,0.15), (2,0.30), (3,0.35), (4,0.20)] → tổng = 1.00 ✓
+reset_num_timesteps=(pi==1): chỉ reset bộ đếm ở phase 1,
+giữ liên tục qua các phase → checkpoint và eval đúng thứ tự. ✓
+eval_env dùng difficulty=4 nhất quán (đánh giá ở độ khó cao nhất). ✓
+
+[✅ F5] Lịch sạc theo thói quen — 4 profile đa dạng hợp lý
+─────────────────────────────────────────────────────────────────
+office/student/freelance/desktop bao phủ các kiểu dùng thực tế.
+Nhiễu 2%/step (lệch thói quen) tránh AI overfit vào lịch cứng. ✓
+Kết hợp với chu kỳ ngày/đêm → AI có thể đoán trước khi nào có điện. ✓
+
+[✅ F6] Quán tính nhiệt theo dòng máy — mô hình bậc 1 đúng
+─────────────────────────────────────────────────────────────────
+Công thức: Temp += (target-Temp)*heat - cool*(Temp-room)
+Kiểm tra số liệu (30 steps, 15W, cắm sạc):
+  ultrabook (heat=0.32, cool=0.05): → 40.3°C (target 42.6°C) ✓
+  gaming    (heat=0.14, cool=0.13): → 34.1°C (target 42.6°C) ✓
+Ultrabook nóng gắt rõ rệt hơn gaming — đúng thực tế. ✓
+
+[✅ F7] Reward profile gắn với độ nhạy người dùng — triển khai đúng
+─────────────────────────────────────────────────────────────────
+Mỗi profile KHỚP với user_lag_sens và user_dark_sens:
+  battery_saver ↔ ít nhạy giật (0.6-0.9) ↔ rw_lag=0.5
+  performance   ↔ rất nhạy giật (1.4-1.8) ↔ rw_lag=3.0
+AI suy ra "profile" qua tín hiệu reward, không phải obs riêng.
+(Xem DESIGN-01 cho hạn chế quan trọng về inference.)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PHẦN 2 — BUG CẦN SỬA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[BUG-01] ⚠️ train.py — os.makedirs tương đối vẫn còn trong train()
+─────────────────────────────────────────────────────────────────
+File: simulator/train.py, dòng 29 (module level) và 69-70 (train())
+
+Vòng 9 đã fix đúng ở module level:
+    # Dòng 22-29 (đúng):
+    _SIM_DIR   = os.path.dirname(os.path.abspath(__file__))
+    MODELS_DIR = os.path.join(_SIM_DIR, "models")
+    os.makedirs(MODELS_DIR, exist_ok=True)
+
+Nhưng bên trong train() vẫn còn:
+    # Dòng 69-70 (còn sót — relative CWD):
+    os.makedirs("models", exist_ok=True)   ← tạo "models/" ở CWD
+    os.makedirs("logs",   exist_ok=True)   ← tạo "logs/" ở CWD
+
+Hậu quả:
+  • Chạy `python simulator/train.py` từ thư mục gốc project →
+    tạo thêm project_root/models/ và project_root/logs/ rỗng.
+    Dữ liệu thật vẫn vào simulator/models/ (nhờ MODELS_DIR)
+    và simulator/logs/ (nhờ eval_cb dùng _SIM_DIR) — nên
+    KHÔNG mất data, nhưng tạo thư mục rác.
+  • Gây nhầm lẫn: người dùng nhìn vào project_root/models/
+    thấy rỗng, tưởng train chưa xong.
+
+Sửa: xóa 2 dòng 69-70 trong train(), thêm dòng anchor cho logs:
+    LOGS_DIR = os.path.join(_SIM_DIR, "logs")
+    os.makedirs(LOGS_DIR, exist_ok=True)
+    (rồi dùng LOGS_DIR trong eval_cb thay vì build lại path)
+
+
+[BUG-02] ℹ️ Action queue — warmup: action đầu chạy nhiều lần
+─────────────────────────────────────────────────────────────────
+File: simulator/battery_env.py, bước step() action delay
+
+Logic hiện tại dùng peek (queue[0]) khi chưa đủ `delay` items:
+    else:
+        eff = self._action_queue[0]   # peek, KHÔNG pop
+
+Kết quả khi mỗi episode bắt đầu:
+  diff=3 (delay=1): action_0 thực thi ở step 0 VÀ step 1 (2 lần)
+  diff=4 (delay=2): action_0 thực thi ở step 0, 1 VÀ step 2 (3 lần)
+
+Tác động thực tế: THẤP vì:
+  • Chỉ ảnh hưởng `delay` bước đầu mỗi episode (~1% episode dài 180 step)
+  • Queue không bị phình (bounded tại delay item sau warmup)
+  • Agent học được hành vi này qua nhiều episode
+
+Sửa sạch (nếu muốn): khi chưa đủ delay, dùng action mặc định:
+    else:
+        # Chua du item trong hang doi (warmup): dung action mac dinh
+        eff = np.array([0.85, 0.80, 0, 1, 0.5, 0, 0], dtype=np.float32)
+Hoặc để nguyên và document rõ đây là "warmup intended behavior".
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PHẦN 3 — ĐIỂM THIẾT KẾ CẦN GHI CHÚ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[DESIGN-01] F7 multi-profile: policy THỎA HIỆP, không đa chế độ thật
+─────────────────────────────────────────────────────────────────
+Khoảng lag penalty giữa các profile cực rộng:
+  battery_saver: B × 0.5 × 0.75 =  0.75  (B=2.0)
+  balanced:      B × 1.0 × 1.05 =  2.10
+  performance:   B × 3.0 × 1.60 =  9.60
+  → Chênh lệch performance/battery_saver: ~12.8×
+
+Vấn đề quan trọng hơn: rl_brain.py khi deploy KHÔNG có tín hiệu
+profile nào. Model ONNX nhận cùng 1 obs vector cho mọi người dùng.
+Kết quả khi train trên 3 profile hỗn hợp là 1 policy TRUNG BÌNH
+— không phải "đa chế độ" thật sự.
+
+Để so sánh, 3 cách triển khai thật:
+  (a) Thêm profile vào obs: 1 số [0.0/0.5/1.0] ở obs[15] →
+      CẦN phá contract (16 chiều) và cập nhật engine.
+  (b) Train 3 model riêng (battery_saver / balanced / performance)
+      → chọn model khi user đặt chế độ trong settings.
+  (c) Giữ nguyên: 1 policy thỏa hiệp, dùng reward shaping
+      để hướng về trung gian.
+
+Cách (c) hiện tại không sai — chỉ cần document đúng:
+  "Model tối ưu cho người dùng trung bình. Người dùng ở cực
+   battery_saver hoặc performance sẽ được phục vụ kém hơn
+   so với model chuyên dụng."
+Cân nhắc (b) nếu muốn cá nhân hóa thật sự trong tương lai.
+
+
+[DESIGN-02] Máy 165Hz bị cắt xuống 144Hz trong simulator
+─────────────────────────────────────────────────────────────────
+MACHINE_TYPES có 1 máy panel=165Hz, nhưng:
+    self.refresh_hz = min(REFRESH_MODE_TO_HZ[2], self.panel_hz)
+    # REFRESH_MODE_TO_HZ[2] = PANEL_MAX_HZ = 144
+
+→ min(144, 165) = 144 — máy 165Hz không bao giờ chạy trên 144Hz.
+
+Lý do hợp lý: PANEL_MAX_HZ=144 được kế thừa từ máy thật (MSI),
+và rl_brain.py dùng hằng số này khi deploy. Nếu nâng lên 165
+trong simulator nhưng rl_brain vẫn dùng 144 → mismatch train/deploy.
+
+Nhưng hệ quả: trong training, máy 165Hz có obs[10] =
+  (144-60)/(165-60) = 84/105 ≈ 0.8, không bao giờ đạt 1.0.
+Khoảng [0.8, 1.0] của obs[10] không bao giờ được train → dead zone.
+
+Đề xuất: hoặc xóa máy 165Hz khỏi MACHINE_TYPES (không dạy điều
+không dùng được), hoặc thêm máy 165Hz nhưng dùng PANEL_MAX_HZ=165
+trong simulator (sẽ cần cập nhật rl_brain khi deploy thật).
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PHẦN 4 — THÔNG TIN KỸ THUẬT BỔ SUNG
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[INFO-01] Spike tần suất diff=4 cao — có thể cần quan sát khi train
+─────────────────────────────────────────────────────────────────
+diff=4: SPIKE_PROB × 2.0 = 4%/step, episode 180 step →
+  kỳ vọng ~7.2 spike/episode. Mỗi spike kéo 3-12 step.
+  Worst case: 7 × 12 = 84 step trong spike state (~47% episode).
+
+Không phải bug (agent học được bù trừ), nhưng nếu reward trung
+bình ở diff=4 cực thấp khi train, thử giảm SPIKE_PROB hoặc
+SPIKE_DUR_MAX để xem convergence cải thiện không.
+Gợi ý: in `spike_step_ratio` vào info dict để monitor.
+
+[INFO-02] Giới hạn charge_in khi plugged
+─────────────────────────────────────────────────────────────────
+    charge_in = 0.0 if (charge_lim and pct >= 0.80) else (self.full_mwh * 0.012)
+    self.battery_mwh = min(self.full_mwh, battery_mwh + charge_in - mwh_step * 0.3)
+
+Tốc độ sạc 1.2%/step = 1.2% × 3600/10 ≈ 43%/giờ — hợp lý cho
+laptop 45-62Wh (sạc từ 0% lên 100% trong ~2.3 giờ). ✓
+`mwh_step × 0.3`: khi cắm sạc vẫn xả 30% điện tiêu thụ → mô
+phỏng khi load cao sạc chậm hơn xả. Hợp lý về vật lý. ✓
+
+[INFO-03] _wl_schedule chỉ dùng episode_steps đầu tiên
+─────────────────────────────────────────────────────────────────
+    self.cur_wl = self._wl_schedule[min(self.step_count, self.episode_steps-1)]
+
+min() bảo vệ off-by-one. Nhưng nếu ai set episode_steps lớn hơn
+180 sau khi tạo env, _gen_schedule() dùng self.episode_steps nên
+sẽ tạo đúng. ✓
+
+[INFO-04] ProgressCallback và ep_info_buffer
+─────────────────────────────────────────────────────────────────
+`self.model.ep_info_buffer` cần Monitor wrapper → đúng,
+_make_vec() có `env = Monitor(env)`. ✓
+Nhưng nếu buffer chưa có episode nào hoàn thành (vài nghìn step
+đầu), mean_reward = 0.0 (fallback) — có thể gây nhầm. Không bug.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PHẦN 5 — ƯU TIÊN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  TRƯỚC KHI TRAIN DÀI:
+    BUG-01: xóa os.makedirs("models") và os.makedirs("logs")
+            tương đối trong train() — tránh gây nhầm về
+            nơi lưu model khi chạy từ thư mục cha.
+
+  CÓ THỂ ĐỂ SAU:
+    BUG-02: document hoặc sửa warmup peek action (ảnh hưởng nhỏ)
+    DESIGN-02: quyết định số phận máy 165Hz (xóa hoặc nâng cap)
+
+  DÀI HẠN (khi cần cá nhân hóa thật sự):
+    DESIGN-01: train 3 model riêng biệt theo profile, hoặc
+               thêm profile vào obs (phá contract, cần refactor)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  TỔNG KẾT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Contract 15→7:        KHÔNG PHÁ ✓
+  11/11 tests PASS:     ĐÃ XÁC NHẬN CHẠY THỰC ✓
+  Vật lý simulator:     HỢP LÝ (nhiệt, sạc, pin phi tuyến) ✓
+  Bug cần sửa ngay:     1 (BUG-01 — makedirs rác trong train())
+  Bug nhỏ/sau:          1 (BUG-02 — warmup peek)
+  Ghi chú thiết kế:     2 (165Hz dead zone, multi-profile limit)
+
+Simulator đã đủ phong phú để train model tổng quát. Chỉ cần
+sửa BUG-01 rồi có thể chạy train dài 3–5 triệu steps.
+
+================================================================
+  END OF REVIEW (SIMULATOR UPGRADE)
+================================================================

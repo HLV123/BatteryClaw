@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BatteryClaw — Bảng điều khiển</title>
+<script src="/static/chart.min.js"></script>
+<style>
+  /* ── Design tokens: phỏng theo Task Manager / Fluent Design (Win11) ──
+     Nền tối mica, card xám, accent xanh hệ thống, Segoe UI. Đồng bộ với
+     cảm giác một công cụ hệ thống Windows, không màu mè. */
+  :root {
+    --bg:        #202020;   /* nền cửa sổ */
+    --surface:   #2b2b2b;   /* card */
+    --surface-2: #323232;   /* card nhấn */
+    --stroke:    #393939;   /* viền mảnh */
+    --text:      #ffffff;
+    --text-dim:  #a0a0a0;
+    --accent:    #4cc2ff;   /* xanh hệ thống Win11 */
+    --accent-dim:#1f3a47;
+    --good:      #6ccb5f;   /* xanh lá pin khỏe */
+    --warn:      #ffb900;
+    --bad:       #ff99a4;
+    --radius:    8px;
+    --font: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 13px;
+    padding: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .titlebar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 4px 4px 14px;
+  }
+  .titlebar .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 8px var(--accent);
+  }
+  .titlebar h1 { font-size: 15px; font-weight: 600; }
+  .titlebar .sub { color: var(--text-dim); font-size: 12px; margin-left: auto; }
+
+  /* lưới card kiểu Task Manager */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+  }
+  .card.wide { grid-column: span 2; }
+  .card.full { grid-column: span 4; }
+  .card h2 {
+    font-size: 12px; font-weight: 600; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: .4px; margin-bottom: 8px;
+  }
+  .big { font-size: 30px; font-weight: 600; line-height: 1.1; }
+  .big .unit { font-size: 14px; color: var(--text-dim); font-weight: 400; }
+  .delta { font-size: 13px; margin-top: 6px; }
+  .delta.up   { color: var(--good); }
+  .delta.down { color: var(--bad); }
+  .muted { color: var(--text-dim); }
+
+  /* gauge sức khỏe pin (vòng tròn) */
+  .gauge-wrap { display: flex; align-items: center; gap: 16px; }
+  .gauge { position: relative; width: 92px; height: 92px; flex: none; }
+  .gauge svg { transform: rotate(-90deg); }
+  .gauge .val {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font-size: 20px; font-weight: 600;
+  }
+  .legend { font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+  .legend b { color: var(--text); font-weight: 600; }
+
+  canvas { width: 100% !important; }
+  .chart-box { height: 160px; }
+  .foot { margin-top: 14px; color: var(--text-dim); font-size: 11px; text-align: center; }
+  .pill {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    background: var(--accent-dim); color: var(--accent); font-size: 11px;
+  }
+</style>
+</head>
+<body>
+  <div class="titlebar">
+    <span class="dot"></span>
+    <h1>BatteryClaw</h1>
+    <span class="sub" id="profile-pill">Đang tải…</span>
+  </div>
+
+  <div class="grid">
+    <!-- thời lượng pin hôm nay vs hôm qua -->
+    <div class="card">
+      <h2>Thời lượng pin hôm nay</h2>
+      <div class="big" id="today-dur">—</div>
+      <div class="delta" id="today-delta">so với hôm qua</div>
+    </div>
+
+    <!-- dự đoán còn lại -->
+    <div class="card">
+      <h2>Dự đoán còn dùng được</h2>
+      <div class="big" id="remaining">—</div>
+      <div class="muted" style="margin-top:6px" id="remaining-rate">—</div>
+    </div>
+
+    <!-- tổng tiết kiệm 30 ngày -->
+    <div class="card">
+      <h2>Tiết kiệm (30 ngày)</h2>
+      <div class="big" id="saved-total">—<span class="unit"> Wh</span></div>
+      <div class="muted" style="margin-top:6px">ước tính so với khi không dùng (chưa phải số đo tuyệt đối)</div>
+    </div>
+    <!-- ghi chú: con số tiết kiệm là ước tính (xem DESIGN-01) -->
+    <!-- sức khỏe pin (gauge) -->
+    <div class="card">
+      <h2>Sức khỏe pin</h2>
+      <div class="gauge-wrap">
+        <div class="gauge">
+          <svg width="92" height="92">
+            <circle cx="46" cy="46" r="40" stroke="#3a3a3a" stroke-width="8" fill="none"/>
+            <circle id="gauge-arc" cx="46" cy="46" r="40" stroke="var(--good)"
+                    stroke-width="8" fill="none" stroke-linecap="round"
+                    stroke-dasharray="251" stroke-dashoffset="251"/>
+          </svg>
+          <div class="val" id="health-val">—</div>
+        </div>
+        <div class="legend" id="health-legend">—</div>
+      </div>
+    </div>
+
+    <!-- biểu đồ discharge theo giờ (kiểu Performance tab) -->
+    <div class="card wide">
+      <h2>Tốc độ xả theo giờ (hôm nay)</h2>
+      <div class="chart-box"><canvas id="hourly"></canvas></div>
+    </div>
+
+    <!-- lịch sử tiết kiệm 30 ngày -->
+    <div class="card wide">
+      <h2>Tiết kiệm 30 ngày gần nhất</h2>
+      <div class="chart-box"><canvas id="history"></canvas></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    BatteryClaw • cập nhật <span id="updated">—</span> •
+    <span class="pill" id="tier-pill">—</span>
+  </div>
+
+<script>
+// ── Tiện ích định dạng ──────────────────────────────────────────────────────
+function fmtDur(sec) {
+  const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60);
+  return `${h}h ${String(m).padStart(2,'0')}p`;
+}
+function setDelta(el, diffSec) {
+  const m = Math.round(Math.abs(diffSec) / 60);
+  if (diffSec >= 0) { el.className = 'delta up';   el.textContent = `▲ +${m} phút so với hôm qua`; }
+  else              { el.className = 'delta down'; el.textContent = `▼ −${m} phút so với hôm qua`; }
+}
+
+// ── Vẽ biểu đồ kiểu Task Manager Performance (area mượt) ─────────────────────
+function areaChart(ctx, labels, data, color, yLabel) {
+  return new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets: [{
+      data, borderColor: color, borderWidth: 1.5,
+      fill: true, tension: 0.35, pointRadius: 0,
+      backgroundColor: (c) => {
+        const {ctx, chartArea} = c.chart;
+        if (!chartArea) return color + '22';
+        const g = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+        g.addColorStop(0, color + '55'); g.addColorStop(1, color + '05');
+        return g;
+      },
+    }]},
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false },
+                 tooltip: { backgroundColor: '#2b2b2b', borderColor: '#393939',
+                            borderWidth: 1, titleColor: '#fff', bodyColor: '#a0a0a0' } },
+      scales: {
+        x: { grid: { color: '#2f2f2f' }, ticks: { color: '#808080', maxTicksLimit: 8 } },
+        y: { grid: { color: '#2f2f2f' }, ticks: { color: '#808080' },
+             title: { display: !!yLabel, text: yLabel, color: '#808080' },
+             beginAtZero: true },
+      },
+    },
+  });
+}
+
+// ── Gauge sức khỏe pin ──────────────────────────────────────────────────────
+function setGauge(pct) {
+  const circ = 251; // 2πr với r=40
+  const arc = document.getElementById('gauge-arc');
+  arc.style.strokeDashoffset = circ * (1 - pct / 100);
+  arc.style.stroke = pct >= 60 ? 'var(--good)' : pct >= 40 ? 'var(--warn)' : 'var(--bad)';
+  document.getElementById('health-val').textContent = Math.round(pct) + '%';
+}
+
+// ── Nạp dữ liệu từ engine localhost ─────────────────────────────────────────
+async function load() {
+  let d;
+  try {
+    d = await (await fetch('/api/dashboard')).json();
+  } catch (e) {
+    // chế độ xem thử khi mở file trực tiếp (không có server) -> dữ liệu mẫu
+    d = window.__DEMO__ || null;
+    if (!d) { document.getElementById('updated').textContent = 'không kết nối được engine'; return; }
+  }
+
+  // thẻ số
+  document.getElementById('today-dur').textContent = fmtDur(d.today_sec);
+  setDelta(document.getElementById('today-delta'), d.diff_sec);
+  document.getElementById('remaining').textContent =
+    d.remaining_hours != null ? fmtDur(d.remaining_hours * 3600) : '—';
+  document.getElementById('remaining-rate').textContent =
+    d.avg_discharge_mw ? `xả ~${Math.round(d.avg_discharge_mw)} mW` : '';
+  document.getElementById('saved-total').innerHTML =
+    `${d.saved_total_wh}<span class="unit"> Wh</span>`;
+
+  // sức khỏe pin
+  setGauge(d.health_pct);
+  document.getElementById('health-legend').innerHTML =
+    `<b>${d.full_mwh}</b>/${d.design_mwh} mWh<br>` +
+    `Dự đoán 1 năm: <b>${d.health_in_1y}%</b><br>` +
+    (d.health_warning ? '<span style="color:var(--warn)">⚠ nên cân nhắc thay pin</span>'
+                      : 'tình trạng ổn định');
+
+  // biểu đồ
+  const hours = Array.from({length:24}, (_,i)=> i + 'h');
+  areaChart(document.getElementById('hourly'), hours, d.hourly_discharge,
+            '#4cc2ff', 'mW');
+  areaChart(document.getElementById('history'),
+            d.history.map(x=>x[0].slice(5)), d.history.map(x=>x[1]/1000),
+            '#6ccb5f', 'Wh');
+
+  document.getElementById('profile-pill').textContent = 'Hồ sơ: ' + d.profile;
+  document.getElementById('tier-pill').textContent = 'Gói: ' + d.tier;
+  document.getElementById('updated').textContent = new Date().toLocaleTimeString('vi-VN');
+}
+load();
+setInterval(load, 15000);  // tự làm mới mỗi 15s
+</script>
+</body>
+</html>

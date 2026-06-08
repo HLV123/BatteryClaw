@@ -1,0 +1,191 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\WINDOWS\system32> cd E:\batteryclaw
+>> powershell -ExecutionPolicy Bypass -File build_business.ps1
+
+==== BatteryClaw Business Build ====
+Entry point : app\buy_business.py (co license gate)
+Output      : E:\batteryclaw\dist\BatteryClaw_business
+
+[0] Don dist cu...
+[1] Kiem tra model...
+    Model co san: E:\batteryclaw\simulator\models\batteryclaw_policy.onnx
+    + model profile: battery_saver
+    + model profile: performance
+[2] Building engine C# (self-contained, khong can .NET tren may khach)...
+Restore complete (1.5s)
+  BatteryClaw.Engine net8.0-windows10.0.19041.0 win-x64 succeeded (3.6s) → E:\batteryclaw\dist\BatteryClaw_business\engine\
+
+Build succeeded in 7.1s
+    Engine built.
+[3] Building BatteryClaw.exe (buy_business.py + license gate)...
+pyinstaller --noconfirm --onefile --windowed --uac-admin --name BatteryClaw --distpath "E:\batteryclaw\dist\BatteryClaw_business" --workpath "E:\batteryclaw\build" --specpath "E:\batteryclaw\build" --collect-submodules online --add-data "E:\batteryclaw\brain;brain" --add-data "E:\batteryclaw\online;online" --add-data "E:\batteryclaw\datacollector;datacollector" --add-data "E:\batteryclaw\commons;commons" --add-data "E:\batteryclaw\dashboard;dashboard" --add-data "E:\batteryclaw\commercial;commercial" --add-data "E:\batteryclaw\worldmodel;worldmodel" --paths "E:\batteryclaw\brain" --paths "E:\batteryclaw\online" --paths "E:\batteryclaw\datacollector" --paths "E:\batteryclaw\commons" --paths "E:\batteryclaw\dashboard" --paths "E:\batteryclaw\commercial" --paths "E:\batteryclaw\app" --paths "E:\batteryclaw\worldmodel" --paths "E:\batteryclaw\online\buffer" --paths "E:\batteryclaw\online\safety" --paths "E:\batteryclaw\online\finetune" --paths "E:\batteryclaw\online\personalize" --paths "E:\batteryclaw\online\feedback" --hidden-import replay_buffer --hidden-import constraints --hidden-import ewc --hidden-import checkpoint --hidden-import finetuner --hidden-import pattern_tracker --hidden-import feedback_store --hidden-import modes --hidden-import online_loop --hidden-import brain_online_adapter "E:\batteryclaw\app\buy_business.py"
+117 DEPRECATION: Running PyInstaller as admin is not necessary nor sensible. Run PyInstaller from a non-administrator terminal. PyInstaller 7.0 will block this.
+445 INFO: PyInstaller: 6.10.0, contrib hooks: 2026.5
+445 INFO: Python: 3.10.11
+493 INFO: Platform: Windows-10-10.0.26200-SP0
+494 INFO: Python environment: C:\Users\ADMIN\AppData\Local\Programs\Python\Python310
+494 INFO: wrote E:\batteryclaw\build\BatteryClaw.spec
+663 INFO: Module search paths (PYTHONPATH):
+['C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\pyinstaller.exe',
+ 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\python310.zip',
+ 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\DLLs',
+ 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib',
+ 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310',
+ 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages',
+ 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\win32',
+ 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\win32\\lib',
+ 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\Pythonwin',
+ 'E:\\batteryclaw\\app',
+ 'E:\\batteryclaw\\brain',
+ 'E:\\batteryclaw\\online',
+ 'E:\\batteryclaw\\datacollector',
+ 'E:\\batteryclaw\\commons',
+ 'E:\\batteryclaw\\dashboard',
+ 'E:\\batteryclaw\\commercial',
+ 'E:\\batteryclaw\\app',
+ 'E:\\batteryclaw\\worldmodel',
+ 'E:\\batteryclaw\\online\\buffer',
+ 'E:\\batteryclaw\\online\\safety',
+ 'E:\\batteryclaw\\online\\finetune',
+ 'E:\\batteryclaw\\online\\personalize',
+ 'E:\\batteryclaw\\online\\feedback']
+1569 INFO: Appending 'datas' from .spec
+1582 INFO: checking Analysis
+1906 INFO: Building because E:\batteryclaw\app\buy_business.py changed
+1906 INFO: Running Analysis Analysis-00.toc
+1906 INFO: Target bytecode optimization level: 0
+1909 INFO: Initializing module dependency graph...
+1913 INFO: Caching module graph hooks...
+1983 INFO: Analyzing base_library.zip ...
+4004 INFO: Processing standard module hook 'hook-heapq.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+4240 INFO: Processing standard module hook 'hook-encodings.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+8205 INFO: Processing standard module hook 'hook-pickle.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+11795 INFO: Caching module dependency graph...
+12682 INFO: Looking for Python shared library...
+12879 INFO: Using Python shared library: C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\python310.dll
+12879 INFO: Analyzing E:\batteryclaw\app\buy_business.py
+13013 INFO: Processing standard module hook 'hook-platform.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+13135 INFO: Processing standard module hook 'hook-urllib3.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+13639 INFO: Processing pre-safe-import-module hook 'hook-typing_extensions.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+13642 INFO: SetuptoolsInfo: initializing cached setuptools info...
+15972 INFO: Processing standard module hook 'hook-multiprocessing.util.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+16259 INFO: Processing standard module hook 'hook-xml.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+20004 INFO: Processing standard module hook 'hook-charset_normalizer.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+20340 INFO: Processing standard module hook 'hook-certifi.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+20974 INFO: Processing standard module hook 'hook-_tkinter.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+21251 INFO: Processing standard module hook 'hook-numpy.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\numpy\\_pyinstaller'
+22405 INFO: Processing standard module hook 'hook-sysconfig.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+24359 INFO: Processing standard module hook 'hook-difflib.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+30032 INFO: Processing standard module hook 'hook-onnxruntime.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+30469 INFO: Processing standard module hook 'hook-pkg_resources.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+33891 INFO: Processing standard module hook 'hook-torch.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+5743 WARNING: Failed to collect submodules for 'torch.utils.tensorboard' because importing 'torch.utils.tensorboard' raised: ModuleNotFoundError: No module named 'tensorboard'
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\site-packages\PyInstaller\utils\hooks\__init__.py:667: DeprecationWarning: `torch.distributed._sharding_spec` will be deprecated, use `torch.distributed._shard.sharding_spec` instead
+  __import__(name)
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\site-packages\PyInstaller\utils\hooks\__init__.py:667: DeprecationWarning: `torch.distributed._sharded_tensor` will be deprecated, use `torch.distributed._shard.sharded_tensor` instead
+  __import__(name)
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\site-packages\PyInstaller\utils\hooks\__init__.py:667: DeprecationWarning: `torch.distributed._shard.checkpoint` will be deprecated, use `torch.distributed.checkpoint` instead
+  __import__(name)
+74696 INFO: hook-torch: this torch build does not depend on MKL...
+78828 INFO: Processing standard module hook 'hook-matplotlib.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+79905 INFO: Processing pre-safe-import-module hook 'hook-packaging.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+79987 INFO: Processing standard module hook 'hook-packaging.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+80307 INFO: Processing pre-safe-import-module hook 'hook-gi.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+81316 INFO: Processing standard module hook 'hook-PIL.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+81596 INFO: Processing standard module hook 'hook-PIL.Image.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+82703 INFO: Processing standard module hook 'hook-xml.etree.cElementTree.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+83316 INFO: Processing standard module hook 'hook-PIL.ImageFilter.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+85436 INFO: Processing standard module hook 'hook-jinja2.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+86669 INFO: Processing standard module hook 'hook-matplotlib.backends.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+90002 INFO: Processing standard module hook 'hook-dateutil.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+90235 INFO: Processing pre-safe-import-module hook 'hook-six.moves.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+123254 INFO: Processing standard module hook 'hook-xml.dom.domreg.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+131186 INFO: Processing standard module hook 'hook-setuptools.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+131206 INFO: Processing pre-safe-import-module hook 'hook-distutils.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+131208 INFO: Processing pre-find-module-path hook 'hook-distutils.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+133191 INFO: Processing standard module hook 'hook-distutils.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+133340 INFO: Processing standard module hook 'hook-distutils.util.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+134226 INFO: Processing pre-safe-import-module hook 'hook-importlib_metadata.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+135882 INFO: Processing pre-safe-import-module hook 'hook-win32com.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\pre_safe_import_module'
+136181 INFO: Processing standard module hook 'hook-win32com.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+136186 INFO: Processing standard module hook 'hook-pythoncom.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+136471 INFO: Processing standard module hook 'hook-pywintypes.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+138070 INFO: Processing standard module hook 'hook-sqlite3.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+157022 INFO: Processing standard module hook 'hook-pandas.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+161491 INFO: Processing standard module hook 'hook-pytz.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+162223 INFO: Processing standard module hook 'hook-pyarrow.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+164591 INFO: Processing standard module hook 'hook-fsspec.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+172177 INFO: Processing standard module hook 'hook-pandas.io.formats.style.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+178015 INFO: Processing standard module hook 'hook-pandas.plotting.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+182283 INFO: Processing standard module hook 'hook-pandas.io.clipboard.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+184174 INFO: Processing pre-safe-import-module hook 'hook-importlib_resources.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+250128 INFO: Processing pre-safe-import-module hook 'hook-tensorflow.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\pre_safe_import_module'
+250360 INFO: Processing module hooks (post-graph stage)...
+275620 INFO: Processing standard module hook 'hook-matplotlib.backends.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+275622 INFO: Matplotlib backend selection method: automatic discovery of used backends
+275665 INFO: Discovered Matplotlib backend(s) via `matplotlib.use()` call in module 'sympy.testing.runtests': ['Agg', 'Agg']
+275681 INFO: The following Matplotlib backends were discovered by scanning for `matplotlib.use()` calls: ['Agg']. If your backend of choice is not in this list, either add a `matplotlib.use()` call to your code, or configure the backend collection via hook options (see: https://pyinstaller.org/en/stable/hooks-config.html#matplotlib-hooks).
+275682 INFO: Selected matplotlib backends: ['Agg']
+277163 INFO: Processing standard module hook 'hook-PIL.SpiderImagePlugin.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+282180 INFO: Processing standard module hook 'hook-_tkinter.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+282183 INFO: TclTkInfo: initializing cached Tcl/Tk info...
+284680 INFO: Performing binary vs. data reclassification (2435 entries)
+748355 INFO: Looking for ctypes DLLs
+748664 WARNING: Ignoring /usr/lib64/libgomp.so.1 imported from C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\_inductor\codecache.py - only basenames are supported with ctypes imports!
+749037 INFO: Analyzing run-time hooks ...
+749134 INFO: Including run-time hook 'pyi_rth_inspect.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+749134 INFO: Including run-time hook 'pyi_rth_pkgutil.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+749150 INFO: Including run-time hook 'pyi_rth_multiprocessing.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+749150 INFO: Including run-time hook 'pyi_rth_pkgres.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+749163 INFO: Including run-time hook 'pyi_rth_pywintypes.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\rthooks'
+749163 INFO: Including run-time hook 'pyi_rth_pythoncom.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\rthooks'
+749163 INFO: Including run-time hook 'pyi_rth_setuptools.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+749163 INFO: Including run-time hook 'pyi_rth_mplconfig.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+749179 INFO: Processing pre-find-module-path hook 'hook-_pyi_rth_utils.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+749179 INFO: Processing standard module hook 'hook-_pyi_rth_utils.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks'
+749211 INFO: Including run-time hook 'pyi_rth__tkinter.py' from 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+749877 INFO: Looking for dynamic libraries
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\site-packages\PyInstaller\building\build_main.py:207: DeprecationWarning: `torch.distributed._sharding_spec` will be deprecated, use `torch.distributed._shard.sharding_spec` instead
+  __import__(package)
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\site-packages\PyInstaller\building\build_main.py:207: DeprecationWarning: `torch.distributed._sharded_tensor` will be deprecated, use `torch.distributed._shard.sharded_tensor` instead
+  __import__(package)
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\site-packages\PyInstaller\building\build_main.py:207: DeprecationWarning: `torch.distributed._shard.checkpoint` will be deprecated, use `torch.distributed.checkpoint` instead
+  __import__(package)
+775595 INFO: Extra DLL search directories (AddDllDirectory): ['C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy.libs', 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\torch\\lib', 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\pandas.libs', 'C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\pyarrow.libs']
+775595 INFO: Extra DLL search directories (PATH): []
+1098137 INFO: Warnings written to E:\batteryclaw\build\BatteryClaw\warn-BatteryClaw.txt
+1100849 INFO: Graph cross-reference written to E:\batteryclaw\build\BatteryClaw\xref-BatteryClaw.html
+1101802 INFO: checking PYZ
+1104371 INFO: checking PKG
+1104528 INFO: Building because toc changed
+1104528 INFO: Building PKG (CArchive) BatteryClaw.pkg
+1325249 INFO: Building PKG (CArchive) BatteryClaw.pkg completed successfully.
+1325678 INFO: Bootloader C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\site-packages\PyInstaller\bootloader\Windows-64bit-intel\runw.exe
+1325678 INFO: checking EXE
+1325837 INFO: Rebuilding EXE-00.toc because BatteryClaw.exe missing
+1325837 INFO: Building EXE from EXE-00.toc
+1325837 INFO: Copying bootloader EXE to E:\batteryclaw\dist\BatteryClaw_business\BatteryClaw.exe
+1325853 INFO: Copying icon to EXE
+1325869 INFO: Copying 0 resources to EXE
+1325869 INFO: Embedding manifest in EXE
+1325869 INFO: Appending PKG archive to EXE
+1326282 INFO: Fixing EXE headers
+1329522 INFO: Building EXE from EXE-00.toc completed successfully.
+  + install.ps1 (installer cho khach)
+
+==== BUILD HOAN THANH ====
+
+Goi khach hang: E:\batteryclaw\dist\BatteryClaw_business
+
+Cach gui khach:
+  1. Nen thu muc 'E:\batteryclaw\dist\BatteryClaw_business' thanh BatteryClaw.zip
+  2. Gui file zip cho khach
+  3. Khach giai nen -> (tuy chon) chay install.ps1 de tao shortcut
+  4. Chay BatteryClaw.exe (Run as admin) -> nhap Server URL + Email + Key
+
+Luu y: key khach nhap se duoc lock vao may do, khong dung tren may khac.
+PS E:\batteryclaw>

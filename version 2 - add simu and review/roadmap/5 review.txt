@@ -1,0 +1,107 @@
+================================================================
+  CODE REVIEW: BatteryClaw — v2 (Vòng 13)
+  Đối chiếu với simulator review trước
+  File đổi: simulator/battery_env.py, simulator/train.py,
+            brain/rl_brain.py
+  Tests: 11/11 PASS (đã chạy xác nhận)
+================================================================
+
+── TÓM TẮT NHANH ─────────────────────────────────────────────
+
+Vòng 13 xử lý đúng và đủ cả 3 mục từ review simulator:
+BUG-01, BUG-02 và DESIGN-02. Hai tệp thay đổi ít nhất (chỉ
+những dòng cần thiết). Còn 2 dòng comment/dict thừa vô hại.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PHẦN 1 — XÁC NHẬN 3 FIX ĐÃ HỢP LỆ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[✅ BUG-01] os.makedirs tương đối trong train() — FIXED sạch
+─────────────────────────────────────────────────────────────────
+Thêm LOGS_DIR anchor tại module level (khớp với MODELS_DIR):
+    LOGS_DIR = os.path.join(_SIM_DIR, "logs")
+    os.makedirs(LOGS_DIR, exist_ok=True)
+
+Bên trong train() không còn bất kỳ makedirs nào.
+eval_cb dùng LOGS_DIR thay vì build path lại từ _SIM_DIR.
+CheckpointCallback, export ONNX đều trỏ về MODELS_DIR.
+Kết quả: chạy từ bất kỳ thư mục nào đều lưu đúng chỗ,
+không tạo thư mục rác ở CWD.
+
+[✅ BUG-02] Action queue warmup peek → default action — FIXED đúng
+─────────────────────────────────────────────────────────────────
+Logic sau khi fix:
+    if delay == 0:
+        eff = queue.pop(0)                   # tức thì
+    elif len(queue) > delay:
+        eff = queue.pop(0)                   # action đã chín
+    else:
+        eff = np.array([0.85,0.80,0,1,0.5,0,0])  # warmup default
+
+Kiểm tra queue size sau warmup (delay=2, mô phỏng 10 step):
+  step 0: queue=[0], eff=DEFAULT
+  step 1: queue=[0,1], eff=DEFAULT
+  step 2: queue=[1,2], eff=0  ← bắt đầu delay thật
+  step 3→: queue luôn ≤ 2 item  ✓
+
+Queue không phình. Action đầu episode không bị lặp. ✓
+Default [0.85, 0.80, 0, 1, 0.5, 0, 0] hợp lý: throttle cao,
+sáng vừa, không tắt dGPU, wifi bình thường — trung tính, an toàn.
+
+[✅ DESIGN-02] obs[10] dead zone máy 165Hz — FIXED toàn diện
+─────────────────────────────────────────────────────────────────
+Hai thay đổi đồng bộ:
+
+(a) battery_env.py: máy gaming cao cấp đổi panel=165 → panel=144
+    (khớp PANEL_MAX_HZ, comment giải thích lý do).
+
+(b) Chuẩn hóa obs[10] đổi mẫu số:
+    Trước: (refresh_hz - 60) / (165 - 60)  → 144Hz cho 0.8
+    Sau:   (refresh_hz - 60) / (PANEL_MAX_HZ - 60)  → 144Hz cho 1.0
+
+    battery_env.py dòng 297:
+        float(np.clip((self.refresh_hz - 60) / (PANEL_MAX_HZ - 60), 0, 1))
+    rl_brain.py dòng 242 (đồng bộ):
+        float(np.clip((refresh_hz - 60) / (144 - 60), 0.0, 1.0))
+
+Kiểm tra:  60Hz → 0.000 | 120Hz → 0.714 | 144Hz → 1.000 ✓
+Train và deploy dùng cùng mẫu số. Dead zone [0.8, 1.0] đã hết. ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PHẦN 2 — 2 DÒN CÒN THỪA (VÔ HẠI, DỌN ĐƯỢC)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[STALE-01] REFRESH_EXTRA_FACTOR vẫn có key 165
+─────────────────────────────────────────────────────────────────
+    REFRESH_EXTRA_FACTOR = {60: 1.00, 120: 1.12, 144: 1.18, 165: 1.22}
+
+Không còn máy nào có panel=165 sau fix DESIGN-02, nên key 165
+không bao giờ được tra. Vô hại vì dict.get() không gây lỗi,
+nhưng là dead entry dễ gây nhầm (tưởng vẫn có máy 165Hz).
+
+Sửa 1 dòng:
+    REFRESH_EXTRA_FACTOR = {60: 1.00, 120: 1.12, 144: 1.18}
+
+[STALE-02] Docstring module vẫn ghi "panel 60/120/144/165Hz"
+─────────────────────────────────────────────────────────────────
+    """...Da dang PHAN CUNG: moi episode boc 1 "may" khac
+       (pin, do chai, co/khong dGPU, cpu base, panel 60/120/144/165Hz)."""
+
+Đổi thành "panel 60/120/144Hz" cho khớp thực tế.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PHẦN 3 — TỔNG KẾT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  3/3 mục review simulator: ĐÃ XỬ LÝ ✓
+  11/11 tests PASS: ĐÃ XÁC NHẬN ✓
+  Còn lại: 2 dòng stale (comment + dict key) — vô hại, dọn 5 phút
+
+Simulator sẵn sàng train dài. Có thể chạy ngay:
+    python simulator/train.py --steps 3000000
+
+================================================================
+  END OF REVIEW (v2)
+================================================================

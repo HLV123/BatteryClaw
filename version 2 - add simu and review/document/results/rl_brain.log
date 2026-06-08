@@ -1,0 +1,349 @@
+08:50:49 [RL] ONNX model loaded: E:\batteryclaw\dist\BatteryClaw_business\models\batteryclaw_policy.onnx
+08:50:49 [RL]   Input : ['batch', 15]
+08:50:49 [RL]   Output: ['batch', 7]
+08:50:49 [RL] [Phase 3] Online learning ON (state: C:\Users\ADMIN\AppData\Roaming\BatteryClaw\state)
+08:50:49 [RL] BatteryClaw RL Brain starting
+08:50:49 [RL] Wake interval: 10.0s
+08:50:49 [RL]   Waiting for engine... (1/10, retry in 1.1s)
+08:50:50 [RL]   Waiting for engine... (2/10, retry in 2.0s)
+08:50:53 [RL]   Waiting for engine... (3/10, retry in 4.2s)
+08:50:57 [RL] Pipe connected (attempt 4)
+08:50:57 [RL] Ready. Controlling...
+08:50:57 [RL] ------------------------------------------------------------
+08:50:57 [RL] Step    1 | Batt:87.0% | CPU:17.0% @20% | Br:30% | GPU:dGPU->sw0 | 60Hz->m2 | Disch:10709mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:0mWh
+08:51:07 [RL] Step    2 | Batt:87.0% | CPU:11.2% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:10709mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:30mWh
+08:51:17 [RL] Step    3 | Batt:87.0% | CPU:12.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:24749mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:30mWh
+08:51:27 [RL] Step    4 | Batt:87.0% | CPU: 2.2% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8254mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:30mWh
+08:51:37 [RL] Step    5 | Batt:87.0% | CPU: 1.9% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8254mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:53mWh
+08:51:47 [RL] Step    6 | Batt:87.0% | CPU: 1.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8671mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:53mWh
+08:51:57 [RL] Step    7 | Batt:87.0% | CPU: 1.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8671mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:77mWh
+08:52:07 [RL] Step    8 | Batt:86.0% | CPU: 2.1% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8611mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:77mWh
+08:52:17 [RL] Step    9 | Batt:86.0% | CPU: 3.1% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8611mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:101mWh
+08:52:27 [RL] Step   10 | Batt:86.0% | CPU: 3.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8132mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:101mWh
+08:52:37 [RL] Step   11 | Batt:86.0% | CPU: 2.5% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8132mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:123mWh
+08:52:47 [RL] Step   12 | Batt:86.0% | CPU: 1.5% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8132mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:146mWh
+08:52:57 [RL] Step   13 | Batt:86.0% | CPU: 1.8% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8132mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:168mWh
+08:53:07 [RL] Step   14 | Batt:86.0% | CPU: 1.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8132mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:191mWh
+08:53:17 [RL] Step   15 | Batt:86.0% | CPU: 1.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8132mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:214mWh
+08:53:27 [RL] Step   16 | Batt:86.0% | CPU: 1.5% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8693mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:214mWh
+08:53:37 [RL] Step   17 | Batt:86.0% | CPU: 1.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8693mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:238mWh
+08:53:47 [RL] Step   18 | Batt:86.0% | CPU: 1.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8693mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:262mWh
+08:53:57 [RL] Step   19 | Batt:86.0% | CPU: 2.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8164mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:262mWh
+08:54:07 [RL] Step   20 | Batt:86.0% | CPU: 3.1% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8164mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:285mWh
+08:54:17 [RL] Step   21 | Batt:86.0% | CPU: 2.9% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:10327mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:285mWh
+08:54:27 [RL] Step   22 | Batt:85.0% | CPU: 1.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8260mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:285mWh
+08:54:37 [RL] Step   23 | Batt:85.0% | CPU: 1.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8260mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:308mWh
+08:54:47 [RL] Step   24 | Batt:85.0% | CPU: 1.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8260mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:330mWh
+08:54:57 [RL] Step   25 | Batt:85.0% | CPU: 1.5% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8260mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:353mWh
+08:55:07 [RL] Step   26 | Batt:85.0% | CPU: 1.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8260mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:376mWh
+08:55:17 [RL] Step   27 | Batt:85.0% | CPU: 1.9% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8260mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:399mWh
+08:55:27 [RL] Step   28 | Batt:85.0% | CPU: 6.9% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12753mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:399mWh
+08:55:37 [RL] Step   29 | Batt:85.0% | CPU: 2.9% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12753mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:435mWh
+08:55:47 [RL] Step   30 | Batt:85.0% | CPU: 2.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12753mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:470mWh
+08:55:57 [RL] Step   31 | Batt:85.0% | CPU: 2.5% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8099mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:470mWh
+08:56:07 [RL] Step   32 | Batt:85.0% | CPU: 3.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8099mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:493mWh
+08:56:17 [RL] Step   33 | Batt:85.0% | CPU: 2.0% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:10365mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:493mWh
+08:56:27 [RL] Step   34 | Batt:85.0% | CPU: 1.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8717mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:494mWh
+08:56:37 [RL] Step   35 | Batt:85.0% | CPU: 1.8% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8717mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:518mWh
+08:56:47 [RL] Step   36 | Batt:84.0% | CPU: 1.4% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8127mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:518mWh
+08:56:57 [RL] Step   37 | Batt:84.0% | CPU: 1.5% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8127mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:541mWh
+08:57:07 [RL] Step   38 | Batt:84.0% | CPU: 2.0% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8127mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:563mWh
+08:57:17 [RL] Step   39 | Batt:84.0% | CPU: 2.9% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8127mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:586mWh
+08:57:27 [RL] Step   40 | Batt:84.0% | CPU: 2.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8142mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:586mWh
+08:57:37 [RL] Step   41 | Batt:84.0% | CPU: 2.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8142mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:608mWh
+08:57:47 [RL] Step   42 | Batt:84.0% | CPU: 1.4% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8142mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:631mWh
+08:57:57 [RL] Step   43 | Batt:84.0% | CPU: 1.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8142mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:654mWh
+08:58:07 [RL] Step   44 | Batt:84.0% | CPU: 1.2% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8142mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:676mWh
+08:58:17 [RL] Step   45 | Batt:84.0% | CPU: 1.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8063mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:676mWh
+08:58:27 [RL] Step   46 | Batt:84.0% | CPU: 1.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8120mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:676mWh
+08:58:37 [RL] Step   47 | Batt:84.0% | CPU: 1.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8120mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:699mWh
+08:58:47 [RL] Step   48 | Batt:84.0% | CPU: 1.8% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8672mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:699mWh
+08:58:57 [RL] Step   49 | Batt:84.0% | CPU: 2.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8672mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:723mWh
+08:59:07 [RL] Step   50 | Batt:83.0% | CPU: 2.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8102mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:723mWh
+08:59:17 [RL] Step   51 | Batt:83.0% | CPU: 2.5% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8102mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:745mWh
+08:59:27 [RL] Step   52 | Batt:83.0% | CPU: 1.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8330mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:745mWh
+08:59:37 [RL] Step   53 | Batt:83.0% | CPU: 2.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8330mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:769mWh
+08:59:47 [RL] Step   54 | Batt:83.0% | CPU: 1.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8330mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:792mWh
+08:59:57 [RL] Step   55 | Batt:83.0% | CPU: 1.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8330mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:815mWh
+09:00:07 [RL] Step   56 | Batt:83.0% | CPU: 1.2% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8330mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:838mWh
+09:00:17 [RL] Step   57 | Batt:83.0% | CPU: 2.8% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8330mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:861mWh
+09:00:27 [RL] Step   58 | Batt:83.0% | CPU: 2.4% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8876mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:861mWh
+09:00:37 [RL] Step   59 | Batt:83.0% | CPU: 2.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:8876mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:886mWh
+09:00:47 [RL] Step   60 | Batt:83.0% | CPU: 9.0% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:17806mW | Temp:40C | BATTERY | App:SearchHost.exe | Saved:886mWh
+09:00:57 [RL] Step   61 | Batt:83.0% | CPU:22.4% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:17806mW | Temp:40C | BATTERY | App:WINWORD.exe    | Saved:935mWh
+09:01:07 [RL] Step   62 | Batt:83.0% | CPU:16.5% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:17806mW | Temp:40C | BATTERY | App:WINWORD.exe    | Saved:985mWh
+09:01:18 [RL] Step   63 | Batt:82.0% | CPU: 8.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:14074mW | Temp:40C | BATTERY | App:WINWORD.exe    | Saved:985mWh
+09:01:28 [RL] Step   64 | Batt:82.0% | CPU: 9.0% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12309mW | Temp:40C | BATTERY | App:WINWORD.exe    | Saved:985mWh
+09:01:38 [RL] Step   65 | Batt:82.0% | CPU:15.5% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12309mW | Temp:40C | BATTERY | App:WINWORD.exe    | Saved:1019mWh
+09:01:48 [RL] Step   66 | Batt:82.0% | CPU:13.1% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12309mW | Temp:40C | BATTERY | App:WINWORD.exe    | Saved:1053mWh
+09:01:58 [RL] Step   67 | Batt:82.0% | CPU: 4.1% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12463mW | Temp:40C | BATTERY | App:WINWORD.exe    | Saved:1053mWh
+09:02:08 [RL] Step   68 | Batt:82.0% | CPU:11.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12463mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1088mWh
+09:02:18 [RL] Step   69 | Batt:82.0% | CPU: 6.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12584mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1088mWh
+09:02:28 [RL] Step   70 | Batt:81.0% | CPU: 7.9% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:13174mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1102mWh
+09:02:38 [RL] Step   71 | Batt:81.0% | CPU: 8.0% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:13024mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1115mWh
+09:02:48 [RL] Step   72 | Batt:81.0% | CPU:16.2% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:13024mW | Temp:40C | BATTERY | App:POWERPNT.exe   | Saved:1152mWh
+09:02:58 [RL] Step   73 | Batt:81.0% | CPU:21.0% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:13024mW | Temp:40C | BATTERY | App:POWERPNT.exe   | Saved:1188mWh
+09:03:08 [RL] Step   74 | Batt:81.0% | CPU: 9.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:13024mW | Temp:40C | BATTERY | App:POWERPNT.exe   | Saved:1224mWh
+09:03:18 [RL] Step   75 | Batt:81.0% | CPU:10.2% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:14815mW | Temp:40C | BATTERY | App:POWERPNT.exe   | Saved:1224mWh
+09:03:28 [RL] Step   76 | Batt:81.0% | CPU:17.1% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:15622mW | Temp:40C | BATTERY | App:browser.exe    | Saved:1224mWh
+09:03:38 [RL] Step   77 | Batt:81.0% | CPU:23.2% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:15622mW | Temp:40C | BATTERY | App:browser.exe    | Saved:1267mWh
+09:03:48 [RL] Step   78 | Batt:80.0% | CPU:21.1% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12586mW | Temp:40C | BATTERY | App:browser.exe    | Saved:1267mWh
+09:03:58 [RL] Step   79 | Batt:80.0% | CPU:24.1% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12586mW | Temp:40C | BATTERY | App:browser.exe    | Saved:1302mWh
+09:04:08 [RL] Step   80 | Batt:80.0% | CPU:25.6% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12586mW | Temp:40C | BATTERY | App:browser.exe    | Saved:1337mWh
+09:04:18 [RL] Step   81 | Batt:80.0% | CPU:29.5% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12586mW | Temp:40C | BATTERY | App:explorer.exe   | Saved:1372mWh
+09:04:28 [RL] Step   82 | Batt:80.0% | CPU:20.8% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:14586mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1372mWh
+09:04:38 [RL] Step   83 | Batt:80.0% | CPU:11.2% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:14586mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1413mWh
+09:04:48 [RL] Step   84 | Batt:80.0% | CPU:18.5% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12943mW | Temp:40C | BATTERY | App:browser.exe    | Saved:1413mWh
+09:04:58 [RL] Step   85 | Batt:80.0% | CPU:16.0% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12943mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1449mWh
+09:05:08 [RL] Step   86 | Batt:79.0% | CPU: 7.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12697mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1449mWh
+09:05:18 [RL] Step   87 | Batt:79.0% | CPU: 8.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:12697mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1484mWh
+09:05:28 [RL] Step   88 | Batt:79.0% | CPU:15.7% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:15511mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1484mWh
+09:05:38 [RL] Step   89 | Batt:79.0% | CPU:12.4% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:15511mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1527mWh
+09:05:48 [RL] Step   90 | Batt:79.0% | CPU:11.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:13338mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1527mWh
+09:05:58 [RL] Step   91 | Batt:79.0% | CPU:10.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:13338mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1564mWh
+09:06:08 [RL] Step   92 | Batt:79.0% | CPU: 9.8% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:13639mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1564mWh
+09:06:18 [RL] Step   93 | Batt:79.0% | CPU: 9.1% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:13639mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1602mWh
+09:06:28 [RL] Step   94 | Batt:78.0% | CPU:14.1% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:16280mW | Temp:40C | BATTERY | App:ShellHost.exe  | Saved:1602mWh
+09:06:38 [RL] Step   95 | Batt:78.0% | CPU:17.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:16280mW | Temp:40C | BATTERY | App:explorer.exe   | Saved:1647mWh
+09:06:48 [RL] Step   96 | Batt:78.0% | CPU:38.0% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:16280mW | Temp:40C | BATTERY | App:Code.exe       | Saved:1693mWh
+09:06:58 [RL] Step   97 | Batt:78.0% | CPU:35.1% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:20481mW | Temp:40C | BATTERY | App:Code.exe       | Saved:1693mWh
+09:07:08 [RL] Step   98 | Batt:78.0% | CPU:31.7% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:20481mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1749mWh
+09:07:18 [RL] Step   99 | Batt:78.0% | CPU:18.5% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:14820mW | Temp:40C | BATTERY | App:SearchHost.exe | Saved:1749mWh
+09:07:28 [RL] Step  100 | Batt:77.0% | CPU:25.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:32051mW | Temp:40C | BATTERY | App:EXCEL.exe      | Saved:1781mWh
+09:07:38 [RL] Step  101 | Batt:77.0% | CPU:15.4% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:32051mW | Temp:40C | BATTERY | App:EXCEL.exe      | Saved:1870mWh
+09:07:48 [RL] Step  102 | Batt:77.0% | CPU:11.6% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:14346mW | Temp:40C | BATTERY | App:EXCEL.exe      | Saved:1870mWh
+09:07:58 [RL] Step  103 | Batt:77.0% | CPU:10.5% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:14346mW | Temp:40C | BATTERY | App:EXCEL.exe      | Saved:1910mWh
+09:08:08 [RL] Step  104 | Batt:77.0% | CPU:10.0% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:15980mW | Temp:40C | BATTERY | App:EXCEL.exe      | Saved:1910mWh
+09:08:18 [RL] Step  105 | Batt:77.0% | CPU:13.6% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:15980mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1955mWh
+09:08:28 [RL] Step  106 | Batt:76.0% | CPU:13.7% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:14210mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:1955mWh
+09:08:38 [RL] Step  107 | Batt:76.0% | CPU:51.0% @22% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:24626mW | Temp:40C | BATTERY | App:chrome.exe     | Saved:1977mWh
+09:08:48 [RL] Step  108 | Batt:76.0% | CPU:31.2% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:24626mW | Temp:40C | BATTERY | App:chrome.exe     | Saved:2046mWh
+09:08:58 [RL] Step  109 | Batt:76.0% | CPU:13.3% @23% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:14201mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:2046mWh
+09:09:08 [RL] Step  110 | Batt:76.0% | CPU:10.3% @24% | Br:31% | GPU:dGPU->sw0 | 144Hz->m2 | Disch:14201mW | Temp:40C | BATTERY | App:BatteryClaw.ex | Saved:2085mWh
+09:09:18 [RL] Step  111 | Batt:76.0% | CPU:10.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:09:28 [RL] Step  112 | Batt:76.0% | CPU: 9.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:09:38 [RL] Step  113 | Batt:76.0% | CPU: 4.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:09:48 [RL] Step  114 | Batt:76.0% | CPU: 2.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:09:58 [RL] Step  115 | Batt:76.0% | CPU: 4.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:10:08 [RL] Step  116 | Batt:76.0% | CPU: 3.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:10:18 [RL] Step  117 | Batt:76.0% | CPU: 6.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:10:28 [RL] Step  118 | Batt:77.0% | CPU: 5.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:10:38 [RL] Step  119 | Batt:77.0% | CPU: 7.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:10:48 [RL] Step  120 | Batt:77.0% | CPU: 7.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:explorer.exe   | Saved:2085mWh
+09:10:58 [RL] Step  121 | Batt:77.0% | CPU:14.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:11:08 [RL] Step  122 | Batt:77.0% | CPU:16.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:11:18 [RL] Step  123 | Batt:77.0% | CPU:11.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:11:28 [RL] Step  124 | Batt:78.0% | CPU: 7.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:11:38 [RL] Step  125 | Batt:78.0% | CPU: 7.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:11:48 [RL] Step  126 | Batt:78.0% | CPU: 5.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:11:58 [RL] Step  127 | Batt:78.0% | CPU: 8.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:12:08 [RL] Step  128 | Batt:78.0% | CPU:14.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:12:18 [RL] Step  129 | Batt:78.0% | CPU:13.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:12:28 [RL] Step  130 | Batt:78.0% | CPU: 6.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:12:38 [RL] Step  131 | Batt:78.0% | CPU: 7.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:12:48 [RL] Step  132 | Batt:79.0% | CPU: 6.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:12:58 [RL] Step  133 | Batt:79.0% | CPU: 5.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:13:08 [RL] Step  134 | Batt:79.0% | CPU: 6.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:13:18 [RL] Step  135 | Batt:79.0% | CPU:12.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:13:28 [RL] Step  136 | Batt:79.0% | CPU: 7.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:13:38 [RL] Step  137 | Batt:79.0% | CPU: 8.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:13:48 [RL] Step  138 | Batt:79.0% | CPU: 8.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:13:58 [RL] Step  139 | Batt:79.0% | CPU: 7.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:14:08 [RL] Step  140 | Batt:79.0% | CPU: 6.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:14:18 [RL] Step  141 | Batt:79.0% | CPU: 7.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:14:28 [RL] Step  142 | Batt:80.0% | CPU: 5.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:14:38 [RL] Step  143 | Batt:80.0% | CPU: 5.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:14:48 [RL] Step  144 | Batt:80.0% | CPU: 9.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:14:58 [RL] Step  145 | Batt:80.0% | CPU: 2.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:15:08 [RL] Step  146 | Batt:80.0% | CPU: 1.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:15:18 [RL] Step  147 | Batt:80.0% | CPU: 1.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:15:28 [RL] Step  148 | Batt:80.0% | CPU: 2.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:15:38 [RL] Step  149 | Batt:80.0% | CPU: 2.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:15:48 [RL] Step  150 | Batt:80.0% | CPU: 2.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:15:58 [RL] Step  151 | Batt:80.0% | CPU: 1.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:16:08 [RL] Step  152 | Batt:81.0% | CPU: 1.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:16:18 [RL] Step  153 | Batt:81.0% | CPU: 1.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:BatteryClaw.ex | Saved:2085mWh
+09:16:28 [RL] Step  154 | Batt:81.0% | CPU: 3.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:16:38 [RL] Step  155 | Batt:81.0% | CPU:11.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:16:48 [RL] Step  156 | Batt:81.0% | CPU:12.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:16:58 [RL] Step  157 | Batt:81.0% | CPU:12.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:17:08 [RL] Step  158 | Batt:81.0% | CPU:10.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:17:18 [RL] Step  159 | Batt:81.0% | CPU: 9.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:17:28 [RL] Step  160 | Batt:81.0% | CPU: 8.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:17:38 [RL] Step  161 | Batt:81.0% | CPU: 6.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:17:48 [RL] Step  162 | Batt:82.0% | CPU:14.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:17:58 [RL] Step  163 | Batt:82.0% | CPU: 7.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:18:08 [RL] Step  164 | Batt:82.0% | CPU: 8.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:explorer.exe   | Saved:2085mWh
+09:18:18 [RL] Step  165 | Batt:82.0% | CPU: 7.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:18:28 [RL] Step  166 | Batt:82.0% | CPU:10.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:18:38 [RL] Step  167 | Batt:82.0% | CPU:10.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Notepad.exe    | Saved:2085mWh
+09:18:48 [RL] Step  168 | Batt:82.0% | CPU:11.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Notepad.exe    | Saved:2085mWh
+09:18:58 [RL] Step  169 | Batt:82.0% | CPU:10.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:19:08 [RL] Step  170 | Batt:82.0% | CPU:11.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:19:18 [RL] Step  171 | Batt:82.0% | CPU:11.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:19:28 [RL] Step  172 | Batt:83.0% | CPU:11.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:19:38 [RL] Step  173 | Batt:83.0% | CPU: 4.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:19:48 [RL] Step  174 | Batt:83.0% | CPU: 4.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:19:58 [RL] Step  175 | Batt:83.0% | CPU:10.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:20:08 [RL] Step  176 | Batt:83.0% | CPU:12.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:20:18 [RL] Step  177 | Batt:83.0% | CPU: 9.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:20:28 [RL] Step  178 | Batt:83.0% | CPU: 7.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:20:38 [RL] Step  179 | Batt:83.0% | CPU: 9.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:20:48 [RL] Step  180 | Batt:83.0% | CPU: 7.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:20:58 [RL] Step  181 | Batt:83.0% | CPU: 6.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:21:09 [RL] Step  182 | Batt:83.0% | CPU: 5.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:21:19 [RL] Step  183 | Batt:83.0% | CPU: 7.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Notepad.exe    | Saved:2085mWh
+09:21:29 [RL] Step  184 | Batt:83.0% | CPU: 8.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Notepad.exe    | Saved:2085mWh
+09:21:39 [RL] Step  185 | Batt:83.0% | CPU: 6.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Notepad.exe    | Saved:2085mWh
+09:21:49 [RL] Step  186 | Batt:84.0% | CPU:10.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:21:59 [RL] Step  187 | Batt:84.0% | CPU:10.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:22:09 [RL] Step  188 | Batt:84.0% | CPU: 7.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:22:19 [RL] Step  189 | Batt:84.0% | CPU: 8.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:22:29 [RL] Step  190 | Batt:84.0% | CPU: 9.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:22:39 [RL] Step  191 | Batt:84.0% | CPU: 8.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:22:49 [RL] Step  192 | Batt:84.0% | CPU: 7.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:22:59 [RL] Step  193 | Batt:84.0% | CPU: 6.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:23:09 [RL] Step  194 | Batt:84.0% | CPU: 4.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:23:19 [RL] Step  195 | Batt:84.0% | CPU: 7.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:23:29 [RL] Step  196 | Batt:84.0% | CPU: 9.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:23:39 [RL] Step  197 | Batt:84.0% | CPU:14.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:23:49 [RL] Step  198 | Batt:85.0% | CPU: 9.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:23:59 [RL] Step  199 | Batt:85.0% | CPU: 7.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:24:09 [RL] Step  200 | Batt:85.0% | CPU: 7.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:24:19 [RL] Step  201 | Batt:85.0% | CPU: 9.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:24:29 [RL] Step  202 | Batt:85.0% | CPU: 8.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:24:39 [RL] Step  203 | Batt:85.0% | CPU:13.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:24:49 [RL] Step  204 | Batt:85.0% | CPU:12.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:24:59 [RL] Step  205 | Batt:85.0% | CPU: 6.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:25:09 [RL] Step  206 | Batt:85.0% | CPU: 6.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:25:19 [RL] Step  207 | Batt:85.0% | CPU: 7.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:25:29 [RL] Step  208 | Batt:85.0% | CPU: 9.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:25:39 [RL] Step  209 | Batt:85.0% | CPU: 7.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:25:49 [RL] Step  210 | Batt:85.0% | CPU: 6.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:25:59 [RL] Step  211 | Batt:85.0% | CPU: 6.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:26:09 [RL] Step  212 | Batt:85.0% | CPU: 7.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:26:19 [RL] Step  213 | Batt:85.0% | CPU: 5.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:26:29 [RL] Step  214 | Batt:86.0% | CPU: 5.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:26:39 [RL] Step  215 | Batt:86.0% | CPU: 4.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:26:49 [RL] Step  216 | Batt:86.0% | CPU: 7.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:26:59 [RL] Step  217 | Batt:86.0% | CPU: 7.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:27:09 [RL] Step  218 | Batt:86.0% | CPU: 8.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:27:19 [RL] Step  219 | Batt:86.0% | CPU:13.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:27:29 [RL] Step  220 | Batt:86.0% | CPU: 9.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:27:39 [RL] Step  221 | Batt:86.0% | CPU: 9.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:27:49 [RL] Step  222 | Batt:86.0% | CPU: 9.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:27:59 [RL] Step  223 | Batt:86.0% | CPU:10.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:28:09 [RL] Step  224 | Batt:86.0% | CPU: 9.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:28:19 [RL] Step  225 | Batt:86.0% | CPU: 9.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:28:29 [RL] Step  226 | Batt:86.0% | CPU:10.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:28:39 [RL] Step  227 | Batt:86.0% | CPU: 9.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:28:49 [RL] Step  228 | Batt:86.0% | CPU: 6.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:28:59 [RL] Step  229 | Batt:86.0% | CPU: 5.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:29:09 [RL] Step  230 | Batt:87.0% | CPU: 5.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:29:19 [RL] Step  231 | Batt:87.0% | CPU: 5.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:29:29 [RL] Step  232 | Batt:87.0% | CPU: 5.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:29:39 [RL] Step  233 | Batt:87.0% | CPU: 9.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:29:49 [RL] Step  234 | Batt:87.0% | CPU:13.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:29:59 [RL] Step  235 | Batt:87.0% | CPU:13.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:30:09 [RL] Step  236 | Batt:87.0% | CPU:15.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:30:19 [RL] Step  237 | Batt:87.0% | CPU:14.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:30:29 [RL] Step  238 | Batt:87.0% | CPU:11.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:30:39 [RL] Step  239 | Batt:87.0% | CPU:17.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:explorer.exe   | Saved:2085mWh
+09:30:49 [RL] Step  240 | Batt:87.0% | CPU:19.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:30:59 [RL] Step  241 | Batt:87.0% | CPU:12.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:31:09 [RL] Step  242 | Batt:87.0% | CPU: 6.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:31:19 [RL] Step  243 | Batt:87.0% | CPU: 6.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:31:29 [RL] Step  244 | Batt:87.0% | CPU: 3.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:31:39 [RL] Step  245 | Batt:87.0% | CPU: 1.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:31:49 [RL] Step  246 | Batt:87.0% | CPU: 2.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:31:59 [RL] Step  247 | Batt:87.0% | CPU: 2.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:32:09 [RL] Step  248 | Batt:88.0% | CPU: 2.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:32:19 [RL] Step  249 | Batt:88.0% | CPU: 2.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:32:29 [RL] Step  250 | Batt:88.0% | CPU: 3.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:32:39 [RL] Step  251 | Batt:88.0% | CPU: 3.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:32:49 [RL] Step  252 | Batt:88.0% | CPU: 9.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:32:59 [RL] Step  253 | Batt:88.0% | CPU: 4.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:33:09 [RL] Step  254 | Batt:88.0% | CPU: 8.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:33:19 [RL] Step  255 | Batt:88.0% | CPU: 1.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:33:29 [RL] Step  256 | Batt:88.0% | CPU: 1.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:33:39 [RL] Step  257 | Batt:88.0% | CPU: 9.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:33:49 [RL] Step  258 | Batt:88.0% | CPU: 2.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:33:59 [RL] Step  259 | Batt:88.0% | CPU: 3.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:34:09 [RL] Step  260 | Batt:88.0% | CPU: 2.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:34:19 [RL] Step  261 | Batt:88.0% | CPU: 1.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:34:29 [RL] Step  262 | Batt:88.0% | CPU: 1.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:34:39 [RL] Step  263 | Batt:88.0% | CPU: 2.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:34:49 [RL] Step  264 | Batt:88.0% | CPU: 1.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:34:59 [RL] Step  265 | Batt:88.0% | CPU: 5.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:35:09 [RL] Step  266 | Batt:88.0% | CPU:11.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:35:19 [RL] Step  267 | Batt:88.0% | CPU: 2.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:35:29 [RL] Step  268 | Batt:89.0% | CPU: 2.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:35:39 [RL] Step  269 | Batt:89.0% | CPU: 6.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:35:49 [RL] Step  270 | Batt:89.0% | CPU: 4.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:35:59 [RL] Step  271 | Batt:89.0% | CPU: 4.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:36:09 [RL] Step  272 | Batt:89.0% | CPU: 1.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:36:19 [RL] Step  273 | Batt:89.0% | CPU: 1.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:36:29 [RL] Step  274 | Batt:89.0% | CPU: 1.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:36:39 [RL] Step  275 | Batt:89.0% | CPU: 0.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:36:49 [RL] Step  276 | Batt:89.0% | CPU: 5.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:36:59 [RL] Step  277 | Batt:89.0% | CPU: 2.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:37:09 [RL] Step  278 | Batt:89.0% | CPU: 5.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:37:19 [RL] Step  279 | Batt:89.0% | CPU: 3.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:37:29 [RL] Step  280 | Batt:89.0% | CPU: 2.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:37:39 [RL] Step  281 | Batt:89.0% | CPU: 1.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:37:49 [RL] Step  282 | Batt:89.0% | CPU: 3.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:37:59 [RL] Step  283 | Batt:89.0% | CPU:10.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:38:09 [RL] Step  284 | Batt:89.0% | CPU: 5.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:38:19 [RL] Step  285 | Batt:89.0% | CPU: 6.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:38:29 [RL] Step  286 | Batt:89.0% | CPU: 9.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:38:39 [RL] Step  287 | Batt:89.0% | CPU: 3.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:38:49 [RL] Step  288 | Batt:89.0% | CPU: 2.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:38:59 [RL] Step  289 | Batt:89.0% | CPU: 3.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:Code.exe       | Saved:2085mWh
+09:39:09 [RL] Step  290 | Batt:90.0% | CPU:15.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:39:19 [RL] Step  291 | Batt:90.0% | CPU:13.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:39:29 [RL] Step  292 | Batt:90.0% | CPU: 8.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:39:39 [RL] Step  293 | Batt:90.0% | CPU: 8.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:39:49 [RL] Step  294 | Batt:90.0% | CPU: 8.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:39:59 [RL] Step  295 | Batt:90.0% | CPU: 8.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:40:09 [RL] Step  296 | Batt:90.0% | CPU: 8.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:40:19 [RL] Step  297 | Batt:90.0% | CPU:10.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:40:29 [RL] Step  298 | Batt:90.0% | CPU:12.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:40:39 [RL] Step  299 | Batt:90.0% | CPU: 9.3% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:40:49 [RL] Step  300 | Batt:90.0% | CPU: 8.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:40:59 [RL] Step  301 | Batt:90.0% | CPU: 7.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:41:09 [RL] Step  302 | Batt:90.0% | CPU: 6.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:41:19 [RL] Step  303 | Batt:90.0% | CPU: 7.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:41:29 [RL] Step  304 | Batt:90.0% | CPU:10.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:41:39 [RL] Step  305 | Batt:90.0% | CPU: 5.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:41:49 [RL] Step  306 | Batt:90.0% | CPU:12.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:42:00 [RL] Step  307 | Batt:90.0% | CPU: 9.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:42:10 [RL] Step  308 | Batt:90.0% | CPU: 8.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:42:20 [RL] Step  309 | Batt:90.0% | CPU: 8.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:42:30 [RL] Step  310 | Batt:90.0% | CPU: 8.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:42:40 [RL] Step  311 | Batt:90.0% | CPU: 8.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:42:50 [RL] Step  312 | Batt:90.0% | CPU: 8.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:43:00 [RL] Step  313 | Batt:90.0% | CPU: 7.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:43:10 [RL] Step  314 | Batt:91.0% | CPU: 8.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:43:20 [RL] Step  315 | Batt:91.0% | CPU: 5.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:43:30 [RL] Step  316 | Batt:91.0% | CPU: 7.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:43:40 [RL] Step  317 | Batt:91.0% | CPU: 7.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:43:50 [RL] Step  318 | Batt:91.0% | CPU: 8.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:44:00 [RL] Step  319 | Batt:91.0% | CPU: 6.2% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:44:10 [RL] Step  320 | Batt:91.0% | CPU: 4.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:44:20 [RL] Step  321 | Batt:91.0% | CPU: 4.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:44:30 [RL] Step  322 | Batt:91.0% | CPU: 4.6% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:44:40 [RL] Step  323 | Batt:91.0% | CPU: 4.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:44:50 [RL] Step  324 | Batt:91.0% | CPU: 4.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:45:00 [RL] Step  325 | Batt:91.0% | CPU: 5.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:45:10 [RL] Step  326 | Batt:91.0% | CPU:11.7% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:45:20 [RL] Step  327 | Batt:91.0% | CPU: 7.4% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:45:30 [RL] Step  328 | Batt:91.0% | CPU: 6.8% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:45:40 [RL] Step  329 | Batt:91.0% | CPU: 6.1% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:45:50 [RL] Step  330 | Batt:91.0% | CPU: 4.9% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:46:00 [RL] Step  331 | Batt:91.0% | CPU: 5.0% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:46:10 [RL] Step  332 | Batt:91.0% | CPU: 5.5% @60% | Br:45% | GPU:dGPU->sw1 | 144Hz->m2 | Disch:0mW | Temp:43C | PLUGGED | App:browser.exe    | Saved:2085mWh
+09:46:20 [RL] Restoring default settings...
+09:46:20 [RL] Total estimated battery saved: 2085 mWh
+09:46:20 [RL] Equivalent           : 6.5% of battery capacity
+09:46:20 [RL] [Phase 3] Saved replay buffer + pattern.
+09:46:20 [RL] RL Brain stopped.

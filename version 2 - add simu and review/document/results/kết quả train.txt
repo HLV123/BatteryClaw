@@ -1,0 +1,261 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\WINDOWS\system32> cd E:\batteryclaw
+PS E:\batteryclaw> python simulator\train.py --steps 5000000
+BatteryClaw — Train PPO Agent
+==================================================
+[1] Khoi tao 8 environments song song...
+[2] Khoi tao PPO model...
+[3] Train 5,000,000 steps...
+    n_envs      = 8
+    batch_size  = 512
+    net_arch    = [256, 256]
+
+
+  >>> Phase 1/4 | difficulty=1 | 600,000 steps
+  Steps:  25,000 | FPS:  1082 | Mean reward:  193.49 | Elapsed: 23s
+  Steps:  50,000 | FPS:   948 | Mean reward:  211.64 | Elapsed: 53s
+  Steps:  75,000 | FPS:   994 | Mean reward:  221.99 | Elapsed: 75s
+  Steps: 100,000 | FPS:  1007 | Mean reward:  228.26 | Elapsed: 99s
+  Steps: 125,000 | FPS:  1058 | Mean reward:  238.28 | Elapsed: 118s
+  Steps: 150,000 | FPS:  1046 | Mean reward:  252.36 | Elapsed: 143s
+  Steps: 175,000 | FPS:  1088 | Mean reward:  256.41 | Elapsed: 161s
+  Steps: 200,000 | FPS:  1078 | Mean reward:  260.68 | Elapsed: 186s
+  Steps: 225,000 | FPS:  1112 | Mean reward:  266.46 | Elapsed: 202s
+  Steps: 250,000 | FPS:  1114 | Mean reward:  274.69 | Elapsed: 224s
+  Steps: 275,000 | FPS:  1137 | Mean reward:  276.75 | Elapsed: 242s
+  Steps: 300,000 | FPS:  1139 | Mean reward:  286.99 | Elapsed: 263s
+  Steps: 325,000 | FPS:  1160 | Mean reward:  291.51 | Elapsed: 280s
+  Steps: 350,000 | FPS:  1155 | Mean reward:  296.76 | Elapsed: 303s
+  Steps: 375,000 | FPS:  1172 | Mean reward:  299.33 | Elapsed: 320s
+  Steps: 400,000 | FPS:  1160 | Mean reward:  306.62 | Elapsed: 345s
+  Steps: 425,000 | FPS:  1174 | Mean reward:  306.93 | Elapsed: 362s
+  Steps: 450,000 | FPS:  1172 | Mean reward:  316.19 | Elapsed: 384s
+  Steps: 475,000 | FPS:  1183 | Mean reward:  309.26 | Elapsed: 402s
+  Steps: 500,000 | FPS:  1180 | Mean reward:  312.65 | Elapsed: 424s
+  Steps: 525,000 | FPS:  1178 | Mean reward:  311.35 | Elapsed: 446s
+  Steps: 550,000 | FPS:  1189 | Mean reward:  316.70 | Elapsed: 463s
+  Steps: 575,000 | FPS:  1186 | Mean reward:  314.32 | Elapsed: 485s
+  Steps: 600,000 | FPS:  1189 | Mean reward:  316.63 | Elapsed: 504s
+
+  >>> Phase 2/4 | difficulty=2 | 1,650,000 steps
+  Steps: 625,000 | FPS:  1187 | Mean reward:  317.45 | Elapsed: 527s
+  Steps: 650,000 | FPS:  1194 | Mean reward:  297.63 | Elapsed: 544s
+  Steps: 675,000 | FPS:  1192 | Mean reward:  347.28 | Elapsed: 566s
+  Steps: 700,000 | FPS:  1200 | Mean reward:  295.54 | Elapsed: 583s
+  Steps: 725,000 | FPS:  1197 | Mean reward:  273.54 | Elapsed: 606s
+  Steps: 750,000 | FPS:  1204 | Mean reward:  342.36 | Elapsed: 623s
+  Steps: 775,000 | FPS:  1202 | Mean reward:  447.76 | Elapsed: 645s
+  Steps: 800,000 | FPS:  1203 | Mean reward:  183.05 | Elapsed: 665s
+  Steps: 825,000 | FPS:  1200 | Mean reward:  337.78 | Elapsed: 688s
+  Steps: 850,000 | FPS:  1206 | Mean reward:  398.44 | Elapsed: 705s
+  Steps: 875,000 | FPS:  1203 | Mean reward:  379.97 | Elapsed: 727s
+  Steps: 900,000 | FPS:  1209 | Mean reward:  386.36 | Elapsed: 744s
+  Steps: 925,000 | FPS:  1207 | Mean reward:  528.53 | Elapsed: 767s
+  Steps: 950,000 | FPS:  1212 | Mean reward:  247.51 | Elapsed: 784s
+  Steps: 975,000 | FPS:  1210 | Mean reward:  351.78 | Elapsed: 806s
+  Steps: 1,000,000 | FPS:  1204 | Mean reward:  392.34 | Elapsed: 831s
+  Steps: 1,025,000 | FPS:  1208 | Mean reward:  309.26 | Elapsed: 848s
+  Steps: 1,050,000 | FPS:  1206 | Mean reward:  337.73 | Elapsed: 871s
+  Steps: 1,075,000 | FPS:  1211 | Mean reward:  379.15 | Elapsed: 888s
+  Steps: 1,100,000 | FPS:  1210 | Mean reward:  380.33 | Elapsed: 909s
+  Steps: 1,125,000 | FPS:  1214 | Mean reward:  297.37 | Elapsed: 927s
+  Steps: 1,150,000 | FPS:  1213 | Mean reward:  443.26 | Elapsed: 948s
+  Steps: 1,175,000 | FPS:  1217 | Mean reward:  279.59 | Elapsed: 966s
+  Steps: 1,200,000 | FPS:  1212 | Mean reward:  320.78 | Elapsed: 990s
+  Steps: 1,225,000 | FPS:  1216 | Mean reward:  326.42 | Elapsed: 1008s
+  Steps: 1,250,000 | FPS:  1214 | Mean reward:  341.73 | Elapsed: 1030s
+  Steps: 1,275,000 | FPS:  1217 | Mean reward:  349.81 | Elapsed: 1047s
+  Steps: 1,300,000 | FPS:  1215 | Mean reward:  323.66 | Elapsed: 1070s
+  Steps: 1,325,000 | FPS:  1219 | Mean reward:  344.84 | Elapsed: 1087s
+  Steps: 1,350,000 | FPS:  1218 | Mean reward:  381.90 | Elapsed: 1109s
+  Steps: 1,375,000 | FPS:  1221 | Mean reward:  332.22 | Elapsed: 1126s
+  Steps: 1,400,000 | FPS:  1216 | Mean reward:  394.05 | Elapsed: 1151s
+  Steps: 1,425,000 | FPS:  1219 | Mean reward:  400.32 | Elapsed: 1169s
+  Steps: 1,450,000 | FPS:  1217 | Mean reward:  369.54 | Elapsed: 1191s
+  Steps: 1,475,000 | FPS:  1216 | Mean reward:  280.28 | Elapsed: 1213s
+  Steps: 1,500,000 | FPS:  1219 | Mean reward:  326.06 | Elapsed: 1231s
+  Steps: 1,525,000 | FPS:  1217 | Mean reward:  344.84 | Elapsed: 1253s
+  Steps: 1,550,000 | FPS:  1221 | Mean reward:  374.69 | Elapsed: 1270s
+  Steps: 1,575,000 | FPS:  1219 | Mean reward:  245.43 | Elapsed: 1292s
+  Steps: 1,600,000 | FPS:  1219 | Mean reward:  317.97 | Elapsed: 1312s
+  Steps: 1,625,000 | FPS:  1217 | Mean reward:  336.18 | Elapsed: 1335s
+  Steps: 1,650,000 | FPS:  1220 | Mean reward:  323.33 | Elapsed: 1352s
+  Steps: 1,675,000 | FPS:  1219 | Mean reward:  370.95 | Elapsed: 1374s
+  Steps: 1,700,000 | FPS:  1221 | Mean reward:  353.89 | Elapsed: 1392s
+  Steps: 1,725,000 | FPS:  1219 | Mean reward:  317.66 | Elapsed: 1415s
+  Steps: 1,750,000 | FPS:  1222 | Mean reward:  343.52 | Elapsed: 1432s
+  Steps: 1,775,000 | FPS:  1220 | Mean reward:  390.61 | Elapsed: 1454s
+  Steps: 1,800,000 | FPS:  1221 | Mean reward:  293.56 | Elapsed: 1475s
+  Steps: 1,825,000 | FPS:  1219 | Mean reward:  342.86 | Elapsed: 1497s
+  Steps: 1,850,000 | FPS:  1222 | Mean reward:  271.25 | Elapsed: 1514s
+  Steps: 1,875,000 | FPS:  1220 | Mean reward:  408.01 | Elapsed: 1537s
+  Steps: 1,900,000 | FPS:  1223 | Mean reward:  382.64 | Elapsed: 1554s
+  Steps: 1,925,000 | FPS:  1221 | Mean reward:  399.75 | Elapsed: 1576s
+  Steps: 1,950,000 | FPS:  1220 | Mean reward:  288.61 | Elapsed: 1598s
+  Steps: 1,975,000 | FPS:  1223 | Mean reward:  379.67 | Elapsed: 1615s
+  Steps: 2,000,000 | FPS:  1220 | Mean reward:  475.98 | Elapsed: 1640s
+  Steps: 2,025,000 | FPS:  1221 | Mean reward:  364.30 | Elapsed: 1659s
+  Steps: 2,050,000 | FPS:  1220 | Mean reward:  260.18 | Elapsed: 1681s
+  Steps: 2,075,000 | FPS:  1222 | Mean reward:  419.75 | Elapsed: 1698s
+  Steps: 2,100,000 | FPS:  1221 | Mean reward:  376.06 | Elapsed: 1721s
+  Steps: 2,125,000 | FPS:  1223 | Mean reward:  330.29 | Elapsed: 1738s
+  Steps: 2,150,000 | FPS:  1221 | Mean reward:  278.73 | Elapsed: 1760s
+  Steps: 2,175,000 | FPS:  1223 | Mean reward:  317.72 | Elapsed: 1778s
+  Steps: 2,200,000 | FPS:  1220 | Mean reward:  341.68 | Elapsed: 1803s
+  Steps: 2,225,000 | FPS:  1222 | Mean reward:  219.67 | Elapsed: 1820s
+  Steps: 2,250,000 | FPS:  1221 | Mean reward:  291.62 | Elapsed: 1843s
+
+  >>> Phase 3/4 | difficulty=3 | 2,150,000 steps
+  Steps: 2,275,000 | FPS:  1223 | Mean reward:  306.87 | Elapsed: 1860s
+  Steps: 2,300,000 | FPS:  1222 | Mean reward:  335.88 | Elapsed: 1882s
+  Steps: 2,325,000 | FPS:  1224 | Mean reward:  301.17 | Elapsed: 1899s
+  Steps: 2,350,000 | FPS:  1223 | Mean reward:  303.43 | Elapsed: 1922s
+  Steps: 2,375,000 | FPS:  1225 | Mean reward:  222.09 | Elapsed: 1939s
+  Steps: 2,400,000 | FPS:  1222 | Mean reward:  304.04 | Elapsed: 1964s
+  Steps: 2,425,000 | FPS:  1221 | Mean reward:  263.61 | Elapsed: 1986s
+  Steps: 2,450,000 | FPS:  1223 | Mean reward:  278.86 | Elapsed: 2004s
+  Steps: 2,475,000 | FPS:  1221 | Mean reward:  286.77 | Elapsed: 2026s
+  Steps: 2,500,000 | FPS:  1223 | Mean reward:  220.18 | Elapsed: 2043s
+  Steps: 2,525,000 | FPS:  1222 | Mean reward:  305.30 | Elapsed: 2066s
+  Steps: 2,550,000 | FPS:  1224 | Mean reward:  268.43 | Elapsed: 2083s
+  Steps: 2,575,000 | FPS:  1223 | Mean reward:  187.42 | Elapsed: 2106s
+  Steps: 2,600,000 | FPS:  1223 | Mean reward:  220.46 | Elapsed: 2126s
+  Steps: 2,625,000 | FPS:  1222 | Mean reward:  346.70 | Elapsed: 2149s
+  Steps: 2,650,000 | FPS:  1223 | Mean reward:  288.56 | Elapsed: 2166s
+  Steps: 2,675,000 | FPS:  1223 | Mean reward:  213.66 | Elapsed: 2188s
+  Steps: 2,700,000 | FPS:  1224 | Mean reward:  352.75 | Elapsed: 2206s
+  Steps: 2,725,000 | FPS:  1223 | Mean reward:  274.54 | Elapsed: 2228s
+  Steps: 2,750,000 | FPS:  1225 | Mean reward:  306.58 | Elapsed: 2245s
+  Steps: 2,775,000 | FPS:  1224 | Mean reward:  251.21 | Elapsed: 2267s
+  Steps: 2,800,000 | FPS:  1224 | Mean reward:  276.57 | Elapsed: 2288s
+  Steps: 2,825,000 | FPS:  1223 | Mean reward:  248.83 | Elapsed: 2310s
+  Steps: 2,850,000 | FPS:  1225 | Mean reward:  288.16 | Elapsed: 2327s
+  Steps: 2,875,000 | FPS:  1223 | Mean reward:  246.53 | Elapsed: 2350s
+  Steps: 2,900,000 | FPS:  1222 | Mean reward:  297.36 | Elapsed: 2372s
+  Steps: 2,925,000 | FPS:  1224 | Mean reward:  324.70 | Elapsed: 2390s
+  Steps: 2,950,000 | FPS:  1223 | Mean reward:  271.30 | Elapsed: 2412s
+  Steps: 2,975,000 | FPS:  1224 | Mean reward:  249.13 | Elapsed: 2430s
+  Steps: 3,000,000 | FPS:  1222 | Mean reward:  257.03 | Elapsed: 2454s
+  Steps: 3,025,000 | FPS:  1224 | Mean reward:  234.50 | Elapsed: 2472s
+  Steps: 3,050,000 | FPS:  1223 | Mean reward:  250.09 | Elapsed: 2494s
+  Steps: 3,075,000 | FPS:  1224 | Mean reward:  328.76 | Elapsed: 2512s
+  Steps: 3,100,000 | FPS:  1223 | Mean reward:  251.97 | Elapsed: 2534s
+  Steps: 3,125,000 | FPS:  1225 | Mean reward:  162.59 | Elapsed: 2551s
+  Steps: 3,150,000 | FPS:  1224 | Mean reward:  258.04 | Elapsed: 2573s
+  Steps: 3,175,000 | FPS:  1226 | Mean reward:  249.85 | Elapsed: 2591s
+  Steps: 3,200,000 | FPS:  1223 | Mean reward:  357.86 | Elapsed: 2616s
+  Steps: 3,225,000 | FPS:  1224 | Mean reward:  326.36 | Elapsed: 2634s
+  Steps: 3,250,000 | FPS:  1224 | Mean reward:  287.88 | Elapsed: 2656s
+  Steps: 3,275,000 | FPS:  1225 | Mean reward:  262.05 | Elapsed: 2674s
+  Steps: 3,300,000 | FPS:  1224 | Mean reward:  309.84 | Elapsed: 2696s
+  Steps: 3,325,000 | FPS:  1225 | Mean reward:  232.00 | Elapsed: 2713s
+  Steps: 3,350,000 | FPS:  1225 | Mean reward:  365.90 | Elapsed: 2736s
+  Steps: 3,375,000 | FPS:  1226 | Mean reward:  262.15 | Elapsed: 2753s
+  Steps: 3,400,000 | FPS:  1224 | Mean reward:  230.83 | Elapsed: 2778s
+  Steps: 3,425,000 | FPS:  1223 | Mean reward:  287.17 | Elapsed: 2800s
+  Steps: 3,450,000 | FPS:  1224 | Mean reward:  285.94 | Elapsed: 2818s
+  Steps: 3,475,000 | FPS:  1222 | Mean reward:  254.70 | Elapsed: 2843s
+  Steps: 3,500,000 | FPS:  1223 | Mean reward:  324.18 | Elapsed: 2862s
+  Steps: 3,525,000 | FPS:  1221 | Mean reward:  250.18 | Elapsed: 2886s
+  Steps: 3,550,000 | FPS:  1222 | Mean reward:  277.65 | Elapsed: 2905s
+  Steps: 3,575,000 | FPS:  1220 | Mean reward:  212.91 | Elapsed: 2930s
+  Steps: 3,600,000 | FPS:  1220 | Mean reward:  316.01 | Elapsed: 2952s
+  Steps: 3,625,000 | FPS:  1218 | Mean reward:  283.34 | Elapsed: 2976s
+  Steps: 3,650,000 | FPS:  1219 | Mean reward:  237.32 | Elapsed: 2995s
+  Steps: 3,675,000 | FPS:  1217 | Mean reward:  274.84 | Elapsed: 3019s
+  Steps: 3,700,000 | FPS:  1218 | Mean reward:  310.49 | Elapsed: 3038s
+  Steps: 3,725,000 | FPS:  1216 | Mean reward:  238.69 | Elapsed: 3063s
+  Steps: 3,750,000 | FPS:  1216 | Mean reward:  298.09 | Elapsed: 3085s
+  Steps: 3,775,000 | FPS:  1212 | Mean reward:  269.40 | Elapsed: 3114s
+  Steps: 3,800,000 | FPS:  1211 | Mean reward:  263.40 | Elapsed: 3139s
+  Steps: 3,825,000 | FPS:  1208 | Mean reward:  308.02 | Elapsed: 3167s
+  Steps: 3,850,000 | FPS:  1207 | Mean reward:  139.26 | Elapsed: 3190s
+  Steps: 3,875,000 | FPS:  1205 | Mean reward:  305.62 | Elapsed: 3217s
+  Steps: 3,900,000 | FPS:  1202 | Mean reward:  230.35 | Elapsed: 3246s
+  Steps: 3,925,000 | FPS:  1202 | Mean reward:  289.16 | Elapsed: 3267s
+  Steps: 3,950,000 | FPS:  1199 | Mean reward:  325.94 | Elapsed: 3295s
+  Steps: 3,975,000 | FPS:  1198 | Mean reward:  227.73 | Elapsed: 3317s
+  Steps: 4,000,000 | FPS:  1194 | Mean reward:  206.97 | Elapsed: 3349s
+  Steps: 4,025,000 | FPS:  1195 | Mean reward:  311.83 | Elapsed: 3369s
+  Steps: 4,050,000 | FPS:  1192 | Mean reward:  233.96 | Elapsed: 3398s
+  Steps: 4,075,000 | FPS:  1192 | Mean reward:  285.43 | Elapsed: 3419s
+  Steps: 4,100,000 | FPS:  1189 | Mean reward:  222.31 | Elapsed: 3447s
+  Steps: 4,125,000 | FPS:  1189 | Mean reward:  267.09 | Elapsed: 3469s
+  Steps: 4,150,000 | FPS:  1186 | Mean reward:  297.95 | Elapsed: 3498s
+  Steps: 4,175,000 | FPS:  1186 | Mean reward:  242.36 | Elapsed: 3519s
+  Steps: 4,200,000 | FPS:  1183 | Mean reward:  211.76 | Elapsed: 3549s
+  Steps: 4,225,000 | FPS:  1183 | Mean reward:  270.61 | Elapsed: 3570s
+  Steps: 4,250,000 | FPS:  1181 | Mean reward:  228.25 | Elapsed: 3599s
+  Steps: 4,275,000 | FPS:  1181 | Mean reward:  277.94 | Elapsed: 3619s
+  Steps: 4,300,000 | FPS:  1179 | Mean reward:  343.23 | Elapsed: 3648s
+  Steps: 4,325,000 | FPS:  1179 | Mean reward:  337.67 | Elapsed: 3669s
+  Steps: 4,350,000 | FPS:  1177 | Mean reward:  348.12 | Elapsed: 3696s
+  Steps: 4,375,000 | FPS:  1175 | Mean reward:  275.60 | Elapsed: 3724s
+  Steps: 4,400,000 | FPS:  1174 | Mean reward:  310.55 | Elapsed: 3749s
+
+  >>> Phase 4/4 | difficulty=4 | 600,000 steps
+  Steps: 4,425,000 | FPS:  1171 | Mean reward:  278.68 | Elapsed: 3777s
+  Steps: 4,450,000 | FPS:  1171 | Mean reward:  286.51 | Elapsed: 3799s
+  Steps: 4,475,000 | FPS:  1169 | Mean reward:  280.94 | Elapsed: 3827s
+  Steps: 4,500,000 | FPS:  1169 | Mean reward:  242.66 | Elapsed: 3849s
+  Steps: 4,525,000 | FPS:  1167 | Mean reward:  246.56 | Elapsed: 3877s
+  Steps: 4,550,000 | FPS:  1167 | Mean reward:  335.07 | Elapsed: 3898s
+  Steps: 4,575,000 | FPS:  1165 | Mean reward:  257.72 | Elapsed: 3927s
+  Steps: 4,600,000 | FPS:  1164 | Mean reward:  295.31 | Elapsed: 3951s
+  Steps: 4,625,000 | FPS:  1162 | Mean reward:  243.82 | Elapsed: 3979s
+  Steps: 4,650,000 | FPS:  1162 | Mean reward:  276.05 | Elapsed: 4001s
+  Steps: 4,675,000 | FPS:  1160 | Mean reward:  277.14 | Elapsed: 4030s
+  Steps: 4,700,000 | FPS:  1160 | Mean reward:  193.91 | Elapsed: 4051s
+  Steps: 4,725,000 | FPS:  1158 | Mean reward:  194.82 | Elapsed: 4079s
+  Steps: 4,750,000 | FPS:  1158 | Mean reward:  265.02 | Elapsed: 4101s
+  Steps: 4,775,000 | FPS:  1156 | Mean reward:  199.90 | Elapsed: 4129s
+  Steps: 4,800,000 | FPS:  1155 | Mean reward:  279.51 | Elapsed: 4155s
+  Steps: 4,825,000 | FPS:  1153 | Mean reward:  224.94 | Elapsed: 4183s
+  Steps: 4,850,000 | FPS:  1152 | Mean reward:  219.73 | Elapsed: 4211s
+  Steps: 4,875,000 | FPS:  1152 | Mean reward:  256.97 | Elapsed: 4233s
+  Steps: 4,900,000 | FPS:  1150 | Mean reward:  288.89 | Elapsed: 4261s
+  Steps: 4,925,000 | FPS:  1150 | Mean reward:  213.31 | Elapsed: 4283s
+  Steps: 4,950,000 | FPS:  1148 | Mean reward:  247.96 | Elapsed: 4311s
+  Steps: 4,975,000 | FPS:  1148 | Mean reward:  329.93 | Elapsed: 4332s
+  Steps: 5,000,000 | FPS:  1146 | Mean reward:  268.00 | Elapsed: 4363s
+  Steps: 5,025,000 | FPS:  1146 | Mean reward:  317.48 | Elapsed: 4385s
+
+Train xong! 4394s (1138 steps/sec)
+Model luu tai: E:\batteryclaw\simulator\models\batteryclaw_ppo_final.zip
+[best] Dung best model de export: E:\batteryclaw\simulator\models\best\best_model.zip
+
+[4] Danh gia model (best)...
+  Mean reward      : 233.35 +/- 479.07
+  Mean battery end : 62.9%
+  Mean lag total   : 58.21
+  Best episode     : 1227.69
+E:\batteryclaw\simulator\train.py:253: UserWarning: Exporting a model while it is in training mode. Please ensure that this is intended, as it may lead to different behavior during inference. Calling model.eval() before export is recommended.
+  torch.onnx.export(
+E:\batteryclaw\simulator\train.py:253: UserWarning: # 'dynamic_axes' is not recommended when dynamo=True, and may lead to 'torch._dynamo.exc.UserError: Constraints violated.' Supply the 'dynamic_shapes' argument instead if export is unsuccessful.
+  torch.onnx.export(
+W0607 02:29:53.713000 14152 site-packages\torch\onnx\_internal\exporter\_compat.py:133] Setting ONNX exporter to use operator set version 18 because the requested opset_version 17 is a lower version than we have implementations for. Automatic version conversion will be performed, which may not be successful at converting to the requested version. If version conversion is unsuccessful, the opset version of the exported model will be kept at 18. Please consider setting opset_version >=18 to leverage latest ONNX features
+W0607 02:29:56.883000 14152 site-packages\torch\onnx\_internal\exporter\_registration.py:107] torchvision is not installed. Skipping torchvision::nms
+W0607 02:29:56.883000 14152 site-packages\torch\onnx\_internal\exporter\_registration.py:107] torchvision is not installed. Skipping torchvision::roi_align
+W0607 02:29:56.883000 14152 site-packages\torch\onnx\_internal\exporter\_registration.py:107] torchvision is not installed. Skipping torchvision::roi_pool
+[torch.onnx] Obtain model graph for `PolicyWrapper([...]` with `torch.export.export(..., strict=False)`...
+[torch.onnx] Obtain model graph for `PolicyWrapper([...]` with `torch.export.export(..., strict=False)`... ✅
+[torch.onnx] Run decompositions...
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+[torch.onnx] Run decompositions... ✅
+[torch.onnx] Translate the graph into ONNX...
+[torch.onnx] Translate the graph into ONNX... ✅
+The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 17).
+[torch.onnx] Optimize the ONNX graph...
+[torch.onnx] Optimize the ONNX graph... ✅
+
+[5] ONNX export: E:\batteryclaw\simulator\models\batteryclaw_policy.onnx
+    Input  : (batch, 15) float32
+    Output : (batch, 7) float32
+    Test run OK: [[-0.29940343 -0.7812688   0.38845378 -0.9377314   0.5891038  -0.21677609
+   0.36259076]]
+PS E:\batteryclaw>

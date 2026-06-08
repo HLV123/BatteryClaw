@@ -1,0 +1,5 @@
+dist\BatteryClaw gửi cho khách\BatteryClaw.exe
+
+dist\BatteryClaw gửi cho khách\engine\BatteryClawEngine.exe
+
+when build successfully

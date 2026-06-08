@@ -1,0 +1,121 @@
+<#
+  BatteryClaw — build_business.ps1
+  Đóng gói bản thương mại đầy đủ license gate.
+  Entry point: app\buy_business.py
+
+  Output: dist\BatteryClaw\
+      BatteryClaw.exe              <- app GUI + license check (PyInstaller)
+      engine\BatteryClawEngine.exe <- engine C# (self-contained, không cần .NET)
+      models\*.onnx                <- AI model đã train
+
+  Khách hàng chỉ cần:
+    1. Giải nén thư mục nhận được
+    2. Chạy BatteryClaw.exe → Windows hỏi Admin → bấm Yes
+    3. Nhập Server URL + Email → Nhập API Key → Kích hoạt → Bắt đầu
+
+  Yêu cầu MÁY BUILD (không phải máy khách):
+    - .NET SDK 8+       : dotnet publish engine
+    - Python 3.10+      : PyInstaller
+    - PyInstaller       : pip install pyinstaller
+    - requests          : pip install requests
+#>
+
+$ErrorActionPreference = "Stop"
+$root = $PSScriptRoot
+$dist = Join-Path $root "dist\BatteryClaw_business"
+
+Write-Host ""
+Write-Host "==== BatteryClaw Business Build ====" -ForegroundColor Cyan
+Write-Host "Entry point : app\buy_business.py (co license gate)" -ForegroundColor Cyan
+Write-Host "Output      : $dist" -ForegroundColor Cyan
+Write-Host ""
+
+# ── 0) Dọn dist cũ ────────────────────────────────────────────────────────────
+Write-Host "[0] Don dist cu..." -ForegroundColor Yellow
+if (Test-Path $dist) {
+    # Dung cmd rmdir manh hon PowerShell Remove-Item khi co file bi lock
+    cmd /c "rmdir /s /q `"$dist`"" 2>$null
+    Start-Sleep -Seconds 1
+    if (Test-Path $dist) {
+        Write-Host "    WARN: Khong xoa het duoc dist cu, tiep tuc..." -ForegroundColor DarkYellow
+    }
+}
+New-Item -ItemType Directory -Force -Path $dist | Out-Null
+New-Item -ItemType Directory -Force -Path (Join-Path $dist "engine") | Out-Null
+New-Item -ItemType Directory -Force -Path (Join-Path $dist "models") | Out-Null
+
+# ── 1) Train model nếu chưa có ────────────────────────────────────────────────
+Write-Host "[1] Kiem tra model..." -ForegroundColor Yellow
+$model     = Join-Path $root "simulator\models\batteryclaw_policy.onnx"
+$modelData = $model + ".data"
+
+if (-not (Test-Path $model)) {
+    Write-Host "    Chua co model, dang train (300k steps)..." -ForegroundColor Yellow
+    python simulator\train.py --steps 300000
+} else {
+    Write-Host "    Model co san: $model" -ForegroundColor Green
+}
+
+Copy-Item $model (Join-Path $dist "models\batteryclaw_policy.onnx") -Force
+if (Test-Path $modelData) {
+    Copy-Item $modelData (Join-Path $dist "models\batteryclaw_policy.onnx.data") -Force
+}
+
+# ── 2) Build engine C# self-contained ────────────────────────────────────────
+Write-Host "[2] Building engine C# (self-contained, khong can .NET tren may khach)..." -ForegroundColor Yellow
+$engineProj = Join-Path $root "engine_dotnet"
+if (Test-Path $engineProj) {
+    Push-Location $engineProj
+    dotnet publish -c Release -r win-x64 --self-contained true `
+        /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true `
+        -o (Join-Path $dist "engine")
+    Pop-Location
+    Write-Host "    Engine built." -ForegroundColor Green
+} else {
+    Write-Host "    WARN: Khong tim thay engine_dotnet\ - bo qua." -ForegroundColor DarkYellow
+}
+
+# ── 3) Build app GUI + license + brain → 1 exe (PyInstaller) ─────────────────
+Write-Host "[3] Building BatteryClaw.exe (buy_business.py + license gate)..." -ForegroundColor Yellow
+
+$addData = @(
+    "brain;brain",
+    "online;online",
+    "datacollector;datacollector",
+    "commons;commons",
+    "dashboard;dashboard",
+    "commercial;commercial"
+)
+$addArgs  = $addData | ForEach-Object { "--add-data `"$root\$_`"" }
+$pathArgs = @("brain","online","datacollector","commons","dashboard","commercial","app") |
+    ForEach-Object { "--paths `"$root\$_`"" }
+
+$pyiCmd = "pyinstaller" +
+    " --noconfirm" +
+    " --onefile" +
+    " --windowed" +
+    " --uac-admin" +
+    " --name BatteryClaw" +
+    " --distpath `"$dist`"" +
+    " --workpath `"$root\build`"" +
+    " --specpath `"$root\build`"" +
+    " " + ($addArgs  -join " ") +
+    " " + ($pathArgs -join " ") +
+    " `"$root\app\buy_business.py`""
+
+Write-Host $pyiCmd -ForegroundColor DarkGray
+Invoke-Expression $pyiCmd
+
+# ── Done ──────────────────────────────────────────────────────────────────────
+Write-Host ""
+Write-Host "==== BUILD HOAN THANH ====" -ForegroundColor Green
+Write-Host ""
+Write-Host "Goi khach hang: $dist" -ForegroundColor Green
+Write-Host ""
+Write-Host "Cach gui khach:" -ForegroundColor Cyan
+Write-Host "  1. Nen thu muc '$dist' thanh BatteryClaw.zip"
+Write-Host "  2. Gui file zip cho khach"
+Write-Host "  3. Khach giai nen -> chay BatteryClaw.exe -> bam Yes (UAC)"
+Write-Host "  4. Khach nhap Server URL + Email -> API Key -> Kich hoat -> Bat dau"
+Write-Host ""
+Write-Host "Luu y: key khach nhap se duoc lock vao may do, khong dung tren may khac." -ForegroundColor Yellow

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>BatteryClaw Admin</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Tahoma,Arial,sans-serif;font-size:13px;background:#f0f0f0;color:#000}
+.wrap{max-width:900px;margin:10px auto;background:#fff;border:1px solid #999;padding:10px}
+h1{font-size:14px;font-weight:bold;border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:10px}
+h2{font-size:13px;font-weight:bold;margin:12px 0 6px}
+.tabs{display:flex;gap:2px;margin-bottom:10px;border-bottom:1px solid #999}
+.tab{padding:4px 12px;cursor:pointer;background:#ddd;border:1px solid #999;border-bottom:none;font-size:12px}
+.tab.on{background:#fff;border-bottom:1px solid #fff;margin-bottom:-1px}
+.sec{display:none}.sec.on{display:block}
+input,select,textarea{border:1px solid #999;padding:3px 5px;font-size:12px;font-family:inherit}
+input:focus{outline:1px solid #000}
+button{border:1px solid #888;background:#ddd;padding:3px 10px;cursor:pointer;font-size:12px;font-family:inherit}
+button:hover{background:#c8c8c8}button:active{background:#bbb}
+button.red{background:#ffdddd;border-color:#c00}
+button.red:hover{background:#ffcccc}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#e0e0e0;border:1px solid #ccc;padding:3px 6px;text-align:left;font-weight:bold}
+td{border:1px solid #ddd;padding:3px 6px;vertical-align:top}
+tr:nth-child(even) td{background:#f8f8f8}
+.badge{display:inline-block;padding:1px 6px;font-size:11px;border:1px solid}
+.on{border-color:#080;color:#080}.off{border-color:#c00;color:#c00}
+.row{display:flex;gap:6px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+.lbl{min-width:80px;font-size:12px}
+#msg{color:#c00;font-size:12px;margin:4px 0}
+.key-text{font-family:Courier New,monospace;font-size:13px;font-weight:bold;
+          background:#fffde0;border:1px solid #cc0;padding:4px 8px;display:inline-block}
+.stat-box{display:inline-block;border:1px solid #999;padding:6px 14px;
+          margin-right:8px;text-align:center;min-width:90px;background:#f8f8f8}
+.stat-box .n{font-size:22px;font-weight:bold;display:block}
+.stat-box .l{font-size:11px;color:#555}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>BatteryClaw — Quan tri</h1>
+
+  <div class="row" style="margin-bottom:8px">
+    <span class="lbl">Admin token:</span>
+    <input type="password" id="tok" style="width:200px">
+    <button onclick="setToken()">Xac nhan</button>
+    <span id="tok-ok" style="color:green;font-size:12px"></span>
+  </div>
+
+  <div class="tabs">
+    <div class="tab on" onclick="tab('dashboard')">Tong quan</div>
+    <div class="tab" onclick="tab('keys')">Danh sach Key</div>
+    <div class="tab" onclick="tab('create')">Tao Key moi</div>
+    <div class="tab" onclick="tab('logs')">Lich su</div>
+  </div>
+
+  <!-- TONG QUAN -->
+  <div class="sec on" id="sec-dashboard">
+    <div id="stat-area" style="margin:8px 0"></div>
+    <h2>Key gan day</h2>
+    <table id="tbl-recent"><thead><tr>
+      <th>Key</th><th>Email</th><th>Zalo</th><th>Con han</th><th>Gia</th><th>Trang thai</th>
+    </tr></thead><tbody id="tbody-recent"></tbody></table>
+  </div>
+
+  <!-- DANH SACH KEY -->
+  <div class="sec" id="sec-keys">
+    <div class="row" style="margin-bottom:8px">
+      <input id="search" placeholder="Tim kiem key, email, zalo..." style="width:260px"
+             oninput="filterKeys()">
+      <button onclick="loadKeys()">Lam moi</button>
+    </div>
+    <table><thead><tr>
+      <th>Key</th><th>Email</th><th>Zalo</th><th>Tao luc</th>
+      <th>Het han</th><th>May</th><th>Gia</th><th>Ghi chu</th><th>TT</th><th>Hanh dong</th>
+    </tr></thead><tbody id="tbody-keys"></tbody></table>
+  </div>
+
+  <!-- TAO KEY MOI -->
+  <div class="sec" id="sec-create">
+    <div style="max-width:380px">
+      <div class="row"><span class="lbl">So Zalo:</span>
+        <input id="c-zalo" style="width:150px" placeholder="0901234567"></div>
+      <div class="row"><span class="lbl">Han (ngay):</span>
+        <input id="c-days" type="number" value="4" style="width:60px"></div>
+      <div class="row"><span class="lbl">Gia (VND):</span>
+        <input id="c-price" type="number" value="50000" style="width:90px"></div>
+      <div class="row"><span class="lbl">Ghi chu:</span>
+        <input id="c-note" style="width:220px" placeholder="VD: Mua qua Zalo 1/6"></div>
+      <div style="margin:8px 0">
+        <button onclick="createKey()" style="padding:4px 20px">Tao API Key</button>
+      </div>
+      <div id="new-key-area" style="display:none;margin-top:10px;padding:8px;
+           border:1px solid #ccc;background:#fffde0">
+        <div style="font-size:12px;margin-bottom:4px">API Key moi:</div>
+        <div class="key-text" id="new-key"></div>
+        <div style="font-size:12px;color:#555;margin-top:4px" id="new-key-info"></div>
+        <button onclick="copyKey()" style="margin-top:6px">Sao chep de gui Zalo</button>
+      </div>
+      <div id="msg"></div>
+    </div>
+  </div>
+
+  <!-- LICH SU -->
+  <div class="sec" id="sec-logs">
+    <button onclick="loadLogs()" style="margin-bottom:8px">Lam moi</button>
+    <table><thead><tr>
+      <th>Thoi gian</th><th>Key</th><th>Email</th><th>May</th><th>IP</th><th>Hanh dong</th>
+    </tr></thead><tbody id="tbody-logs"></tbody></table>
+  </div>
+</div>
+
+<script>
+let token = localStorage.getItem('bc_tok')||'';
+let allKeys = [];
+if(token){ document.getElementById('tok').value=token; document.getElementById('tok-ok').textContent='Da luu'; loadDashboard(); }
+
+function setToken(){
+  token=document.getElementById('tok').value;
+  localStorage.setItem('bc_tok',token);
+  document.getElementById('tok-ok').textContent='Da luu';
+  loadDashboard();
+}
+function H(){ return {'Content-Type':'application/json','X-Admin-Token':token} }
+function tab(name){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('sec-'+name).classList.add('on');
+  event.target.classList.add('on');
+  if(name==='dashboard')loadDashboard();
+  if(name==='keys')loadKeys();
+  if(name==='logs')loadLogs();
+}
+function daysLeft(exp){
+  const d=Math.floor((new Date(exp)-new Date())/86400000);
+  if(d<0)return '<span class="badge off">Het han</span>';
+  if(d<1)return '<span class="badge off">Hom nay</span>';
+  return d+' ngay';
+}
+function statusBadge(k){
+  if(!k.active)return '<span class="badge off">Thu hoi</span>';
+  if(new Date(k.expires_at)<new Date())return '<span class="badge off">Het han</span>';
+  return '<span class="badge on">Hoat dong</span>';
+}
+async function loadDashboard(){
+  try{
+    const[s,keys]=await Promise.all([
+      fetch('/admin/stats',{headers:H()}).then(r=>r.json()),
+      fetch('/admin/keys',{headers:H()}).then(r=>r.json())
+    ]);
+    document.getElementById('stat-area').innerHTML=
+      `<div class="stat-box"><span class="n">${s.total}</span><span class="l">Tong key</span></div>`+
+      `<div class="stat-box"><span class="n">${s.active}</span><span class="l">Dang dung</span></div>`+
+      `<div class="stat-box"><span class="n">${s.expired}</span><span class="l">Het han</span></div>`+
+      `<div class="stat-box"><span class="n">${(s.revenue||0).toLocaleString('vi-VN')}</span><span class="l">VND</span></div>`;
+    document.getElementById('tbody-recent').innerHTML=keys.slice(0,10).map(k=>`<tr>
+      <td style="font-family:monospace">${k.key}</td>
+      <td>${k.email||'-'}</td><td>${k.buyer_zalo||'-'}</td>
+      <td>${daysLeft(k.expires_at)}</td>
+      <td>${(k.price||0).toLocaleString('vi-VN')}</td>
+      <td>${statusBadge(k)}</td></tr>`).join('');
+  }catch(e){alert('Loi: '+e.message)}
+}
+async function loadKeys(){
+  try{
+    allKeys=await fetch('/admin/keys',{headers:H()}).then(r=>r.json());
+    renderKeys(allKeys);
+  }catch(e){alert('Loi: '+e.message)}
+}
+function renderKeys(keys){
+  document.getElementById('tbody-keys').innerHTML=keys.map(k=>`<tr>
+    <td style="font-family:monospace;font-size:12px">${k.key}</td>
+    <td>${k.email||'-'}</td><td>${k.buyer_zalo||'-'}</td>
+    <td style="font-size:11px">${k.created_at.slice(0,16)}</td>
+    <td style="font-size:11px">${k.expires_at.slice(0,16)}</td>
+    <td style="font-size:11px;font-family:monospace">${k.machine_id?k.machine_id.slice(0,10)+'...':'-'}</td>
+    <td>${(k.price||0).toLocaleString('vi-VN')}</td>
+    <td style="font-size:11px">${k.note||'-'}</td>
+    <td>${statusBadge(k)}</td>
+    <td>
+      <button class="red" onclick="revokeKey('${k.key}')">Thu hoi</button>
+      <button onclick="extendKey('${k.key}')" style="margin-top:2px">Gia han</button>
+      <button class="red" onclick="deleteKey('${k.key}')" style="margin-top:2px">Xoa</button>
+    </td></tr>`).join('');
+}
+function filterKeys(){
+  const q=document.getElementById('search').value.toLowerCase();
+  renderKeys(allKeys.filter(k=>
+    k.key.toLowerCase().includes(q)||
+    (k.email||'').toLowerCase().includes(q)||
+    (k.buyer_zalo||'').toLowerCase().includes(q)
+  ));
+}
+async function createKey(){
+  const body={
+    days:parseInt(document.getElementById('c-days').value)||4,
+    price:parseInt(document.getElementById('c-price').value)||0,
+    note:document.getElementById('c-note').value,
+    buyer_zalo:document.getElementById('c-zalo').value,
+  };
+  try{
+    const resp=await fetch('/admin/key/create?days='+body.days+'&price='+body.price+
+      '&note='+encodeURIComponent(body.note)+'&buyer_zalo='+encodeURIComponent(body.buyer_zalo),
+      {method:'POST',headers:H()});
+    if(resp.status===403){document.getElementById('msg').textContent='Sai token!';return;}
+    const r=await resp.json();
+    document.getElementById('new-key-area').style.display='block';
+    document.getElementById('new-key').textContent=r.key;
+    document.getElementById('new-key-info').textContent=`Han su dung: ${r.days} ngay`;
+    document.getElementById('msg').textContent='';
+  }catch(e){document.getElementById('msg').textContent='Loi: '+e.message}
+}
+function copyKey(){
+  const k=document.getElementById('new-key').textContent;
+  const d=document.getElementById('c-days').value;
+  const z=document.getElementById('c-zalo').value;
+  const msg=`BatteryClaw API Key:\n${k}\nHan su dung: ${d} ngay\nMoi thac mac lien he Zalo nay.`;
+  navigator.clipboard.writeText(msg).then(()=>alert('Da sao chep!'));
+}
+async function revokeKey(key){
+  if(!confirm('Thu hoi key '+key+'?'))return;
+  await fetch('/admin/key/revoke/'+key,{method:'POST',headers:H()});
+  loadKeys();
+}
+async function extendKey(key){
+  const d = prompt('Gia han them bao nhieu ngay?', '30');
+  if(d===null) return;
+  const days = parseInt(d);
+  if(!days || days<=0){ alert('So ngay khong hop le'); return; }
+  const r = await fetch('/admin/key/extend/'+key+'?days='+days,{method:'POST',headers:H()});
+  if(r.ok){ const j=await r.json(); alert('Da gia han. Han moi: '+(j.new_expires||'').slice(0,10)); }
+  loadKeys();
+}
+async function deleteKey(key){
+  if(!confirm('XOA VINH VIEN key '+key+'?\nKhong the phuc hoi!'))return;
+  await fetch('/admin/key/'+key,{method:'DELETE',headers:H()});
+  loadKeys();
+}
+async function loadLogs(){
+  try{
+    const logs=await fetch('/admin/logs?limit=200',{headers:H()}).then(r=>r.json());
+    document.getElementById('tbody-logs').innerHTML=logs.map(l=>`<tr>
+      <td style="font-size:11px">${l.ts.slice(0,19)}</td>
+      <td style="font-family:monospace;font-size:11px">${l.key}</td>
+      <td>${l.email||'-'}</td>
+      <td style="font-family:monospace;font-size:11px">${l.machine_id||'-'}</td>
+      <td style="font-size:11px">${l.ip||'-'}</td>
+      <td style="font-size:11px">${l.action}</td></tr>`).join('');
+  }catch(e){alert('Loi: '+e.message)}
+}
+</script>
+</body>
+</html>
